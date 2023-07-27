@@ -1,14 +1,13 @@
-@import url("../vendor/normalize.css");
-@import url("../vendor/fonts.css");
-@import url("../blocks/page.css");
-@import url("../blocks/header.css");
-@import url("../blocks/profile.css");
-@import url("../blocks/cards.css");
-@import url("../blocks/footer.css");
-
-
-
-/*media queries*/
+.header{
+    border-bottom: 1px solid #545454;
+    margin-top:45px;
+}
+.header__logo{
+    max-width: 173px;
+    max-height:74px;
+    padding-left:27px;
+    padding-bottom:32px;
+}
 @media screen and (max-width:1100px){
     .page__section{
         margin:0 20px;

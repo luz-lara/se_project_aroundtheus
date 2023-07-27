@@ -1,0 +1,135 @@
+.cards{
+    margin-top: 51px;
+    }
+    .card__list{
+        display:grid;
+        justify-content:center;
+        grid-template-columns: repeat(auto-fit, 282px);
+        grid-gap:20px 17px;
+        justify-content:center;
+        padding:0;
+        margin:0;
+    }
+    .card{
+        list-style-type: none;
+        display:flex;
+        flex-direction:column;
+    }
+    .card__image{
+        width:282px;
+        height:282px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    .card__description{
+        display:flex;
+        background-color:#fff;
+        color:black;
+        padding-top:25px;
+        padding-bottom:25px;
+        padding-left:20px;
+        padding-right:20px;
+        align-items: center;
+        justify-content:space-between;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    .card__like-button{
+        background: transparent url("../images/heart-icon.svg") center no-repeat;
+        width:21px;
+        height:18px;
+        border:none;
+        transition: opacity 0.6s linear;
+    }
+    .card__like-button:hover{
+        opacity:0.6;
+        cursor:pointer;
+    }
+    .card__title{
+        font-size: 24px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    @media screen and (max-width:1100px){
+        .page__section{
+            margin:0 20px;
+            max-width: calc(100% - 40px);
+        }
+        .cards{
+            margin-top:51px;
+        }
+    }
+    
+    @media screen and (max-width: 780px){
+        .profile__add-button{
+            width: 60px;
+        }
+    
+    }
+    @media screen and (max-width:680px){
+        .page__section{
+            margin:0 20px;
+            max-width: calc(100% - 40px);
+        }
+        .header__logo{
+            width:126px;
+            padding-top:28px;
+    
+        }
+        .profile__photo{
+            object-fit:fill;       
+        }
+        .profile__title{
+            font-size:22px;
+        }
+        .profile__edit-button{
+            width:18px;
+            height:18px;
+        }
+        .profile{
+            display:flex;
+            flex-direction: column;
+            align-items:center;
+            flex-wrap:nowrap;
+            justify-content:center;
+    
+        }
+        .profile__info{
+            grid-gap:0px 0px;
+        
+            
+        }
+        .profile__description{
+            font-size:14px;
+            margin-bottom:36px;
+        }
+        .profile__add-button{
+            margin:0 auto;
+            width:150px;
+        }
+        .cards{
+            margin-top:51px;
+        }
+        .header{
+            margin-top:0;
+        }
+    
+    }
+    @media screen  and (max-width:328px){
+        .page__section{
+            margin:0 20px;
+            max-width: calc(100% - 40px);
+        }
+        .profile__add-button{
+            width:100%;
+        }
+        .cards{
+            margin-top:36px;
+        }
+        .header{
+            margin-top:0;
+        }
+    
+    }
+    

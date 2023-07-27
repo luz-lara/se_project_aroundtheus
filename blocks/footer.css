@@ -1,0 +1,10 @@
+.footer{
+    max-width:880px;
+    margin-bottom:60px;
+}
+.footer__paragraph{
+    color:#545454;
+    font-size:18px;
+    font-family:"Inter";
+    padding-top:67px;
+}
