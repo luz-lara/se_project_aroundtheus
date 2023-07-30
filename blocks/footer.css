@@ -1,20 +1,20 @@
 .footer {
-  max-width:880px;
+  max-width: 880px;
 }
 .footer__copyright {
   color: #545454;
   font-size: 18px;
   margin-top: 67px;
-  margin-bottom:60px;
+  margin-bottom: 60px;
 }
 
-@media screen and (max-width:620px){
-  .footer{
-    max-width:282px;
+@media screen and (max-width: 620px) {
+  .footer {
+    max-width: 282px;
   }
-  .footer__copyright{
-    margin-left:20px;
+  .footer__copyright {
+    margin-left: 20px;
     max-width: calc(100% - 20px);
-    font-size:14px;
+    font-size: 14px;
   }
 }
