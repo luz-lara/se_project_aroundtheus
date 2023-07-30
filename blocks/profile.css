@@ -19,17 +19,22 @@
     line-height: 48px;
     margin:0;
     grid-area:title;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width:373px;
 
 }
 .profile__description{
     font-size: 18px;
-    line-height:22px;
+    line-height:normal;
     font-weight:400;
     grid-area:description;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     margin:0;
+    max-width:415px;
 }
 .profile__edit-button{
     background: transparent url(../images/edit-button.svg) center no-repeat;
@@ -65,87 +70,56 @@
     background-position:center;
     margin-right:24px;
 }
-@media screen and (max-width:1100px){
-    .page__section{
-        margin:0 20px;
-        max-width: calc(100% - 40px);
-    }
-    .cards{
-        margin-top:51px;
-    }
-}
+
 
 @media screen and (max-width: 780px){
     .profile__add-button{
-        width: 60px;
-    }
-
-}
-@media screen and (max-width:680px){
-    .page__section{
-        margin:0 20px;
-        max-width: calc(100% - 40px);
-    }
-    .header__logo{
-        width:126px;
-        padding-top:28px;
-
-    }
-    .profile__photo{
-        object-fit:fill;       
+        width:60px;
     }
     .profile__title{
-        font-size:22px;
-    }
-    .profile__edit-button{
-        width:18px;
-        height:18px;
-    }
-    .profile{
-        display:flex;
-        flex-direction: column;
-        align-items:center;
-        flex-wrap:nowrap;
-        justify-content:center;
+        font-size:30px;
+        line-height:normal;
 
     }
     .profile__info{
-        grid-gap:0px 0px;
-    
-        
+        grid-template-columns: minmax(auto, 290px) auto;
+        grid-gap:9px 1px;
+    }
+    .profile__edit-button{
+        width:20px;
+        height:20px;
+    }
+}
+@media screen and (max-width:620px){
+    .profile{
+        display:flex;
+        flex-direction:column;
+        padding:0;
+        margin-top:38px;
+    }
+    .profile__info{
+        grid-gap:14px 10px;
+        grid-template-columns: minmax(auto, 196px) auto;
+    }
+    .profile__title{
+        font-size:22px;
+        text-align:center;
+    }
+    .profile__photo{
+        margin-right:0;
+        margin-bottom:26px;
+
     }
     .profile__description{
-        font-size:14px;
+        font-size: 14px;
+        max-width:282px;
+        text-align:center;
         margin-bottom:36px;
+
     }
     .profile__add-button{
         margin:0 auto;
-        width:150px;
+        width:282px;
     }
-    .cards{
-        margin-top:51px;
-    }
-    .header{
-        margin-top:0;
-    }
+}
 
-}
-@media screen  and (max-width:328px){
-    .page__section{
-        margin:0 20px;
-        max-width: calc(100% - 40px);
-    }
-    .profile__add-button{
-        width:100%;
-    }
-    .cards{
-        margin-top:36px;
-    }
-    .header{
-        margin-top:0;
-    }
-    .footer__paragraph{
-        padding-top:48px;
-        padding-bottom:36px;
-    }
-}
