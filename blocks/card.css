@@ -26,8 +26,9 @@
   border: none;
   transition: opacity 0.6s linear;
 }
+/*some of the screenshots did not download but I tried my best to find it on Figma! thank you*/
 .card__like-button:hover {
-  opacity: 60%;
+  opacity: 0.5;
   cursor: pointer;
 }
 .card__title {
