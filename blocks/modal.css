@@ -42,7 +42,7 @@
     width:358px;
     box-sizing:border-box;
 }
-input[type="text"]{
+.form_input{
     height:27px;
     border-top:none;
     border-left:none;
