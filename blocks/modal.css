@@ -104,7 +104,7 @@
         width:238px;
         height:46px;
     }
-    .modal__closed{
+    .modal__close-button{
         bottom: calc(100% + 13px);
         left: calc(100% + -40px);
         width:26px;
