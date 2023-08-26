@@ -29,8 +29,8 @@ const profileEditButton =document.querySelector(".profile__edit-button");
 const profileDescription=document.querySelector(".profile__description");
 const profileTitle =document.querySelector(".profile__title");
 const profileModal= document.querySelector("#profile-edit-modal");
-const profileTitleInput=document.querySelector(".form__input-name");
-const profileDescriptionInput=document.querySelector(".form__input-description");
+const profileTitleInput=document.querySelector(".modal__input-name");
+const profileDescriptionInput=document.querySelector(".modal__input-description");
 const closeEditButton=profileModal.querySelector(".modal__close-button");
 const profileForm = profileModal.querySelector(".modal__form");
 const cardListEl=document.querySelector(".gallery__list");
@@ -77,9 +77,4 @@ initialCards.forEach((cardData) =>{
 const cardElement= getCardElement(cardData);
 cardListEl.append(cardElement);
 });
- // const cardElement = cardElement.clodeNode(true);
- // const cardImageEl=cardElement.querySelector(".card__image");
-  //const cardTitle= cardElement.querySelector(".card__title");
-  //cardTitle.textContent = cardData.name;
-//cardListEl.append(cardElement);
-//});
+ 
