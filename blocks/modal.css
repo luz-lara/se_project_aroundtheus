@@ -81,7 +81,7 @@
     background-color:transparent;
     cursor:pointer;
 }
-.modal__opened{
+.modal_opened{
     visibility: visible;
     position:fixed;
     top:0;
