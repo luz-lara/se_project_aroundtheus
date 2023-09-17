@@ -24,7 +24,7 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
-
+//profile edit modal
 const profileEditButton = document.querySelector(".profile__edit-button");
 const profileDescription = document.querySelector(".profile__description");
 const profileTitle = document.querySelector(".profile__title");
@@ -34,21 +34,37 @@ const profileDescriptionInput = document.querySelector(
   ".modal__input-description"
 );
 const closeEditButton = profileModal.querySelector(".modal__close-button");
+
+//add card modal
+const addCardModal = document.querySelector("#profile-add-modal");
+const profileAddButton = document.querySelector(".profile__add-button");
+const addCardCloseButton = addCardModal.querySelector(".modal__close-button");
+
 const profileForm = document.forms["profile-form"];
 const cardListEl = document.querySelector(".gallery__list");
 const cardTemplate =
-  document.querySelector("#card-template").content.firstElementChild;
+document.querySelector("#card-template").content.firstElementChild;
 
+//functions
+  function closePopup() {
+  profileModal.classList.remove("modal_opened");
+}
+
+//event listeners
 profileEditButton.addEventListener("click", function () {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
   profileModal.classList.add("modal_opened");
 });
-function closePopup() {
-  profileModal.classList.remove("modal_opened");
-}
+
+profileAddButton.addEventListener("click", function () {
+  addCardModal.classList.add("modal_opened");
+});
 
 closeEditButton.addEventListener("click", closePopup);
+addCardCloseButton.addEventListener("click", function(){
+  addCardModal.classList.remove("modal_opened");
+});
 
 profileForm.addEventListener("submit", (e) => {
   e.preventDefault();
