@@ -2,6 +2,7 @@
   list-style-type: none;
   display: flex;
   flex-direction: column;
+  position:relative;
 }
 .card__image {
   object-fit: fill;
@@ -26,11 +27,29 @@
   border: none;
   transition: opacity 0.6s linear;
 }
-/*some of the screenshots did not download but I tried my best to find it on Figma! thank you*/
 .card__like-button:hover {
   opacity: 0.5;
   cursor: pointer;
 }
+.card__like-button_active{
+  background-image:url("../images/heart-icon-active.svg");
+}
+
+.card__delete-button{
+  background:transparent url("../images/delete-icon.svg") center no-repeat;
+  width:18px;
+  height:20px;
+  border:none;
+  position:absolute;
+  top: 20px;
+  right:10px;
+  transition: opacity 0.6s linear;
+}
+.card__delete-button:hover{
+  opacity:0.5;
+  cursor:pointer;
+}
+
 .card__title {
   margin-top: 0;
   margin-bottom: 0;
