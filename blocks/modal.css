@@ -95,17 +95,19 @@
 }
 .modal_opened{
     visibility: visible;
-    position:fixed;
-    top:0;
-    right:0;
-    left:0;
-    bottom:0;
-    background-color:rgba(0,0,0,0.5);
-    display:flex;
-    z-index:999;
-    padding:0 19px;
 }
-.
+.modal__preview-container{
+    display:flex;
+    flex-direction: column;
+    margin:auto;
+    max-width: 75vw;
+
+}
+.modal__preview-image{
+    max-width: 75vw;
+    max-height:75vh;
+    object-fit:fill;
+}
 @media screen and (max-width:630px){
     .modal__container{
         max-width:282px;
