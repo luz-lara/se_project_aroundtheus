@@ -38,10 +38,7 @@
           <button class="profile__add-button" type="button"></button>
         </section>
         <section class="gallery page__section">
-
-          <ul class="gallery__list">
-            
-          </ul>
+          <ul class="gallery__list"></ul>
         </section>
       </main>
       <footer class="footer">
@@ -54,47 +51,60 @@
         <button class="modal__close-button"></button>
         <p class="modal__heading">Edit Profile</p>
         <form class="modal__form" name="profile-form">
-          <input type="text" name="title" class="modal__input modal__input-name" placeholder="name">
-          <input type="text" name="description" class="modal__input modal__input-description" placeholder="Description">
+          <input
+            type="text"
+            name="title"
+            class="modal__input modal__input-name"
+            placeholder="name"
+          />
+          <input
+            type="text"
+            name="description"
+            class="modal__input modal__input-description"
+            placeholder="Description"
+          />
           <button class="modal__button">Save</button>
         </form>
       </div>
-      <!-- add card modal-->
-      <div class="modal" id="profile-add-modal">
-        <div class="modal__container">
-          <button class="modal__close-button"></button>
-          <p class="modal__heading">New Place</p>
-          <form class="modal__form" name="add-card-form">
-            <input type="text" name="title" class="modal__input modal__input-title" placeholder="Title">
-            <input type="url" name="link" class="modal__input modal__input-url" placeholder="Image URL">
-            <button class="modal__button">Create</button>
-          </form>
-        </div>
+    </div>
+    <!-- add card modal-->
+    <div class="modal" id="profile-add-modal">
+      <div class="modal__container">
+        <button class="modal__close-button"></button>
+        <p class="modal__heading">New Place</p>
+        <form class="modal__form" name="add-card-form">
+          <input
+            type="text"
+            name="title"
+            class="modal__input modal__input-title"
+            placeholder="Title"
+          />
+          <input
+            type="url"
+            name="link"
+            class="modal__input modal__input-url"
+            placeholder="Image URL"
+          />
+          <button class="modal__button">Create</button>
+        </form>
+      </div>
     </div>
     <!--Preview modal-->
     <div class="modal" id="preview-image-modal">
       <div class="modal__preview-container">
         <button class="preview__close-button"></button>
-       <img
-       src=""
-      class="modal__preview-image"
-      alt=""
-      />
-      <p class="preview__title"></p>
+        <img src="#" class="modal__preview-image" alt="" />
+        <p class="preview__title"></p>
       </div>
-  </div>
-  <!--TEMPLATE-->
+    </div>
+    <!--TEMPLATE-->
     <template id="card-template">
       <li class="card">
-        <img
-          src=""
-          class="card__image"
-          alt=""
-        />
+        <img src="" class="card__image" alt="" />
         <div class="card__description">
           <h2 class="card__title"></h2>
           <button class="card__like-button" type="button"></button>
-          <button class="card__delete-button"type="button"></button>
+          <button class="card__delete-button" type="button"></button>
         </div>
       </li>
     </template>
