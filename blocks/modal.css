@@ -9,6 +9,7 @@
    z-index:999;
    padding:0 19px;
    visibility:hidden;
+   transition:visibility 0.5s,opacity 0.5s linear;
 }
 .profile-add-modal{
     position:fixed;
@@ -20,7 +21,7 @@
     display:flex;
     z-index:999;
     padding:0 19px;
-    visibility:hidden;
+    visibility: hidden;
 }
 .modal__container{
     margin:auto;
@@ -32,6 +33,7 @@
     padding:36px;
     box-sizing:border-box;
     position:relative;
+
 }
 .modal__heading{
     font-size:24px;
@@ -95,6 +97,7 @@
 }
 .modal_opened{
     visibility: visible;
+    opacity:1;
 }
 .modal__preview-container{
     display:flex;
@@ -103,6 +106,7 @@
     max-width: 75vw;
     max-height: 75vh;
     position:relative;
+
 
 }
 .preview__close-button{
