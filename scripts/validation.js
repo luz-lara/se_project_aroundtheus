@@ -1,5 +1,7 @@
-function setEventListeners(formElement,options){
-
+function setEventListeners(formEL,options){
+const {inputSelector}= options;
+const inputEls=[...formEL.querySelectorAll(inputSelector)];
+console.log(inputEls)
 }
 
 function enableValidation(options ){
@@ -22,7 +24,7 @@ formEls.forEach((formEls) => {
 };
 const config={
     formSelector: ".modal__form",
-    inputSelector: ".popup__input",
+    inputSelector: ".modal__input",
     submitButtonSelector: ".popup__button",
     inactiveButtonClass: "popup__button_disabled",
     inputErrorClass: "popup__input_type_error",
