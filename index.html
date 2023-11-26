@@ -56,17 +56,21 @@
             name="title"
             class="modal__input modal__input-name"
             placeholder="name"
+            id="owner-name"
             minlength=2
             maxlength=40
             required/>
+            <span class="modal__error" id="owner-name-error">Please fill out</span>
           <input
             type="text"
             name="description"
             class="modal__input modal__input-description"
+            id="owner-description"
             placeholder="Description"
             minlength=2
             maxlength=200
             required/>
+            <span class="modal__error" id="owner-description-error">Write more</span>
           <button class="modal__button">Save</button>
         </form>
       </div>

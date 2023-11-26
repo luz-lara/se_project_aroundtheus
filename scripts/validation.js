@@ -1,16 +1,40 @@
-function setEventListeners(formEL,options){
-const {inputSelector}= options;
-const inputEls=[...formEL.querySelectorAll(inputSelector)];
-console.log(inputEls)
+function showInputError(formEl,inputEl,options){
+//enable the span error to show 
+const errorMessageEl= formEl.querySelector(`#${inputEl.id}-error`)
+
 }
+
+function checkInputValidity(formEl,inputEl,options){
+if(!inputEl.validity.valid){
+    showInputError(formEl,inputEl,options);
+}else{
+    hideInputError(formEl,inputEl,options);
+}
+}
+
+
+
+
+
+function setEventListeners(formEl,options){
+const {inputSelector}= options;
+const inputEls=[...formEl.querySelectorAll(inputSelector)];
+inputEls.forEach((inputEl) => {
+ inputEl.addEventListener("input",(e)=>{
+checkInputValidity(formEl,inputEl,options);
+        });
+    });
+    
+
+
 
 function enableValidation(options ){
 const formEls=[...document.querySelectorAll(options.formSelector)];
-formEls.forEach((formEls) => {
-    formEls.addEventListener('submit',(e) => {
+formEls.forEach((formEl) => {
+    formEl.addEventListener('submit',(e) => {
         e.preventDefault();
     });
-    
+
     //look for all inputs inside of the form 
     //loop through all the inputs to see if all are valid 
     //if input is NOT valid - grab validation message
@@ -20,6 +44,7 @@ formEls.forEach((formEls) => {
     // if all inputs are valid 
     //- enable button 
     //reset error messages 
+    setEventListeners();
 });
 };
 const config={
