@@ -16,7 +16,7 @@ if(!inputEl.validity.valid){
 
 
 
-function setEventListeners(formEl,options){
+function setEventListeners(formEl,options) {
 const {inputSelector}= options;
 const inputEls=[...formEl.querySelectorAll(inputSelector)];
 inputEls.forEach((inputEl) => {
@@ -25,7 +25,7 @@ checkInputValidity(formEl,inputEl,options);
         });
     });
     
-
+};
 
 
 function enableValidation(options ){
@@ -54,7 +54,7 @@ const config={
     inactiveButtonClass: "popup__button_disabled",
     inputErrorClass: "popup__input_type_error",
     errorClass: "popup__error_visible"
-}
+};
 
 
 enableValidation(config);
