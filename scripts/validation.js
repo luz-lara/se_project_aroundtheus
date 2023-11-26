@@ -1,7 +1,7 @@
 function showInputError(formEl,inputEl,options){
 //enable the span error to show 
 const errorMessageEl= formEl.querySelector(`#${inputEl.id}-error`)
-
+console.log(errorMessageEl);
 }
 
 function checkInputValidity(formEl,inputEl,options){
