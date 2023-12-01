@@ -20,8 +20,8 @@ function setEventListeners(formEl,options) {
 const {inputSelector}= options;
 const inputEls=[...formEl.querySelectorAll(inputSelector)];
 inputEls.forEach((inputEl) => {
- inputEl.addEventListener("input",(e)=>{
-checkInputValidity(formEl,inputEl,options);
+ inputEl.addEventListener("input",()=>{
+console.log("ran input")
         });
     });
     
@@ -44,7 +44,7 @@ formEls.forEach((formEl) => {
     // if all inputs are valid 
     //- enable button 
     //reset error messages 
-    setEventListeners();
+    setEventListeners(formEl,options);
 });
 };
 const config={
