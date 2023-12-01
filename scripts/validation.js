@@ -21,7 +21,7 @@ const {inputSelector}= options;
 const inputEls=[...formEl.querySelectorAll(inputSelector)];
 inputEls.forEach((inputEl) => {
  inputEl.addEventListener("input",()=>{
-console.log("ran input")
+ checkInputValidity(formEl,inputEl,options);
         });
     });
     
