@@ -1,7 +1,8 @@
-function showInputError(formEl,inputEl,{inputErrorClass}){
+function showInputError(formEl,inputEl,{inputErrorClass,errorClass}){
 const errorMessageEl= formEl.querySelector(`#${inputEl.id}-error`);
-console.log(errorMessageEl);
-
+inputEl.classList.add(inputErrorClass);
+errorMessageEl.textContent=inputEl.validationMessage;
+errorMessageEl.classListAdd.add(errorClass);
 }
 
 function checkInputValidity(formEl,inputEl,options){
