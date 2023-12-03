@@ -1,9 +1,6 @@
 function showInputError(formEl,inputEl,{inputErrorClass}){
-//enable the span error to show 
 const errorMessageEl= formEl.querySelector(`#${inputEl.id}-error`);
-inputEl.classList.add(inputErrorClass);
-errorMessageEl.textContent=inputEl.ValidationMessage;
-errorMessageEl.classList.add(errorClass);
+console.log(errorMessageEl);
 
 }
 
@@ -14,10 +11,6 @@ if(!inputEl.validity.valid){
     hideInputError(formEl,inputEl,options);
 }
 }
-
-
-
-
 
 function setEventListeners(formEl, options) {
 const { inputSelector} = options;
