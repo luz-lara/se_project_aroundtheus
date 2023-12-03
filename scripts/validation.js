@@ -9,7 +9,7 @@ function checkInputValidity(formEl,inputEl,options){
 if(!inputEl.validity.valid){
     showInputError(formEl,inputEl,options);
 }else{
-   console.log("do nothing")
+   console.log("do nothing");
 }
 }
 

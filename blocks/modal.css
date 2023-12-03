@@ -74,7 +74,6 @@
 }
 .modal__error{
   color:#f00;
-  font-family:inter;
   font-size:12px;
 }
 .modal__error_visible{
