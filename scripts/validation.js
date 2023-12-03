@@ -9,7 +9,7 @@ function hideInputError(formEl,inputEl,{inputErrorClass,errorClass}){
     inputEl.classList.add(inputErrorClass);
     errorMessageEl.textContent="";
     errorMessageEl.classList.remove(errorClass);
-
+}
 function checkInputValidity(formEl,inputEl,options){
 if(!inputEl.validity.valid){
     showInputError(formEl,inputEl,options);
