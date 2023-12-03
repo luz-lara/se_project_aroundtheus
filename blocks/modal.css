@@ -88,6 +88,11 @@
   margin-top: 36px;
   padding: 0;
 }
+.modal__button_disabled{
+  background-color:#fff;
+  color:#000;
+  opacity:0.2;
+}
 .modal__close-button {
   border: none;
   width: 40px;
