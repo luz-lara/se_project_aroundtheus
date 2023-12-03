@@ -4,12 +4,17 @@ inputEl.classList.add(inputErrorClass);
 errorMessageEl.textContent=inputEl.validationMessage;
 errorMessageEl.classList.add(errorClass);
 }
+function hideInputError(formEl,inputEl,{inputErrorClass,errorClass}){
+    const errorMessageEl= formEl.querySelector(`#${inputEl.id}-error`);
+    inputEl.classList.add(inputErrorClass);
+    errorMessageEl.textContent="";
+    errorMessageEl.classList.remove(errorClass);
 
 function checkInputValidity(formEl,inputEl,options){
 if(!inputEl.validity.valid){
     showInputError(formEl,inputEl,options);
 }else{
-   console.log("do nothing");
+   hideInputError(formEl,inputEl,options);
 }
 }
 
