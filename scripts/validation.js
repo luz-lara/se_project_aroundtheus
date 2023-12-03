@@ -9,7 +9,7 @@ function checkInputValidity(formEl,inputEl,options){
 if(!inputEl.validity.valid){
     showInputError(formEl,inputEl,options);
 }else{
-    hideInputError(formEl,inputEl,options);
+   console.log("do nothing")
 }
 }
 
@@ -48,8 +48,8 @@ const config={
     inputSelector: ".modal__input",
     submitButtonSelector: ".popup__button",
     inactiveButtonClass: "popup__button_disabled",
-    inputErrorClass: "modal__input_type_error",
-    errorClass: "modal__error_visible"
+    inputErrorClass: ".modal__input_type_error",
+    errorClass: ".modal__error_visible"
 };
 
 

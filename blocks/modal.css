@@ -47,9 +47,8 @@
 .modal__form {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  row-gap: 29px;
+  row-gap: 5px;
   margin-top: 54px;
   padding-bottom: 36px;
   width: 358px;
@@ -72,6 +71,14 @@
 }
 .modal__input_type_error{
   border-bottom: 1px red solid;
+}
+.modal__error{
+  color:#f00;
+  font-family:inter;
+  font-size:12px;
+}
+.modal__error_visible{
+  opacity:1;
 }
 .modal__button {
   width: 358px;
@@ -131,9 +138,7 @@
   font-weight: 400px;
   line-height: 14.52px;
 }
-.modal__error_visible{
-  opacity:1;
-}
+
 @media screen and (max-width: 630px) {
   .modal__container {
     max-width: 282px;
