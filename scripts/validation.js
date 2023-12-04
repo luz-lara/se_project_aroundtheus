@@ -28,14 +28,15 @@ function toogleButtonState(inputEls,submitButton,{inactiveButtonClass}){
         submitButton.classList.add(inactiveButtonClass);
         submitButton.disabled=true;
     }else{
-        submitButtonSelector.classList.remove(inactiveButtonClass)
-        submitButtonSelector.disabled=false;
+        submitButton.classList.remove(inactiveButtonClass);
+        submitButton.disabled=false;
+
     }
 };
 
 function setEventListeners(formEl, options) {
 const { inputSelector} = options;
-const submitButton = formEl.querySelectorAll(".modal__button");
+const submitButton = formEl.querySelector(".modal__button");
 const inputEls = [...formEl.querySelectorAll(inputSelector)];
 inputEls.forEach((inputEl) => {
     inputEl.addEventListener("input",(e) => {
