@@ -17,30 +17,30 @@ if(!inputEl.validity.valid){
    hideInputError(formEl,inputEl,options);
 }
 }
-function toogleButtonState(inputEls,{submitButtonSelector,inactiveButtonClass}){
-    const foundInvalid=false;
-    inputEls.forEach(inputEl =>{
+function toogleButtonState(inputEls,submitButton,{inactiveButtonClass}){
+    let foundInvalid =false;
+    inputEls.forEach(inputEl => {
         if (!inputEl.validity.valid){
-            foundInvalid=true;
+            foundInvalid= true;
         }
     });
     if (foundInvalid) {
-        submitButtonSelector.classList.add(inactiveButtonClass);
-        submitButtonSelector.disabled=true;
+        submitButton.classList.add(inactiveButtonClass);
+        submitButton.disabled=true;
     }else{
         submitButtonSelector.classList.remove(inactiveButtonClass)
         submitButtonSelector.disabled=false;
     }
-}
+};
 
 function setEventListeners(formEl, options) {
 const { inputSelector} = options;
-const {submitButtonSelector}=options;
+const submitButton = formEl.querySelectorAll(".modal__button");
 const inputEls = [...formEl.querySelectorAll(inputSelector)];
 inputEls.forEach((inputEl) => {
     inputEl.addEventListener("input",(e) => {
         checkInputValidity(formEl, inputEl, options);
-        toogleButtonState(inputEls,options);
+        toogleButtonState(inputEls,submitButton,options);
     })
 })
 
