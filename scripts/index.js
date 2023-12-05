@@ -52,8 +52,8 @@ const cardLink = addCardModal.querySelector(".modal__input-url");
 const addCardForm = document.forms["add-card-form"];
 //functions
 function keyHandler (e){
-if (e.key === "Escape"){
-  const modal=document.querySelector(".modal__opened");
+if (e.key === "Escape" || e.key === "Esc"){
+  const modal=document.querySelector(".modal_opened");
   closePopup(modal);
 }
 }
