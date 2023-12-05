@@ -51,6 +51,12 @@ const cardTitle = addCardModal.querySelector(".modal__input-title");
 const cardLink = addCardModal.querySelector(".modal__input-url");
 const addCardForm = document.forms["add-card-form"];
 //functions
+function keyHandler (evt){
+if (evt.key === "escape"){
+  const modal=document.querySelector(".modal__opened");
+  closePopup(modal);
+}
+}
 function openModal(modal) {
   modal.classList.add("modal_opened");
 }
@@ -71,6 +77,8 @@ function handleAddCardFormSubmit(evt) {
   closePopup(addCardModal);
 
 }
+
+
 //event listeners click
 profileEditButton.addEventListener("click", function () {
   profileTitleInput.value = profileTitle.textContent;
