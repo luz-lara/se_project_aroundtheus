@@ -59,9 +59,11 @@ if (evt.key === "escape"){
 }
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener('keydown',keyHandler);
 }
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown",keyHandler);
 }
 function renderCard(cardData, cardListEl) {
   const cardElement = getCardElement(cardData);
@@ -136,7 +138,7 @@ function getCardElement(cardData) {
   cardImageEl.alt = cardData.name;
   return cardElement;
 }
-previewImageModal.addEventListener("keydown",keyHandler);
+
 
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
