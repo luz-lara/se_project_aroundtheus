@@ -60,10 +60,12 @@ if (e.key === "Escape" || e.key === "Esc"){
 function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener('keydown',keyHandler);
+  document.addEventListener("click",closePopup);
 }
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown",keyHandler);
+  document.removeEventListener("click",closePopup);
 }
 function renderCard(cardData, cardListEl) {
   const cardElement = getCardElement(cardData);
