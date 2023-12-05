@@ -52,7 +52,7 @@ const cardLink = addCardModal.querySelector(".modal__input-url");
 const addCardForm = document.forms["add-card-form"];
 //functions
 function keyHandler (e){
-if (e.key === "escape"){
+if (e.key === "Escape"){
   const modal=document.querySelector(".modal__opened");
   closePopup(modal);
 }
