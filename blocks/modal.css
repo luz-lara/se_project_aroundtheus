@@ -153,6 +153,7 @@
   .modal__button {
     width: 238px;
     height: 46px;
+    align-self: center;
   }
   .modal__close-button {
     bottom: calc(100% + 13px);

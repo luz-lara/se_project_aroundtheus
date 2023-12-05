@@ -136,6 +136,7 @@ function getCardElement(cardData) {
   cardImageEl.alt = cardData.name;
   return cardElement;
 }
+previewImageModal.addEventListener("keydown",keyHandler);
 
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
