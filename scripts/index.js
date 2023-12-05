@@ -53,8 +53,8 @@ const addCardForm = document.forms["add-card-form"];
 //functions
 function keyHandler (e){
 if (e.key === "Escape"){
-  const openModal=document.querySelector(".modal__opened");
-  closePopup(openModal);
+  const modal=document.querySelector(".modal__opened");
+  closePopup(modal);
 }
 }
 function openModal(modal) {
