@@ -35,7 +35,7 @@ const profileDescriptionInput = document.querySelector(
 );
 const profileForm = document.forms["profile-form"];
 const closeEditButton = profileModal.querySelector(".modal__close-button");
-
+const modalList =document.querySelector('.modal');
 //add card modal
 const addCardModal = document.querySelector("#profile-add-modal");
 const profileAddButton = document.querySelector(".profile__add-button");
@@ -60,12 +60,11 @@ if (e.key === "Escape" || e.key === "Esc"){
 function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener('keydown',keyHandler);
-  document.addEventListener("click",closePopup);
+ 
 }
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown",keyHandler);
-  document.removeEventListener("click",closePopup);
 }
 function renderCard(cardData, cardListEl) {
   const cardElement = getCardElement(cardData);
@@ -89,6 +88,16 @@ profileEditButton.addEventListener("click", function () {
   profileDescriptionInput.value = profileDescription.textContent;
   openModal(profileModal);
 });
+
+modalList.forEach((modal) => {
+modal.addEventListener("click", (e) => {
+  if (e.target.classList.contains("modal")){
+    closePopup(modal);
+  }
+});
+
+});
+
 
 profileAddButton.addEventListener("click", () => {
   openModal(addCardModal);
