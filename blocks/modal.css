@@ -93,19 +93,6 @@
   color:#000;
   opacity:0.2;
 }
-.modal__close-button {
-  border: none;
-  width: 40px;
-  height: 40px;
-  background-image: url("../images/close-icon.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  position: absolute;
-  bottom: calc(100% + 5px);
-  left: calc(100% + 5px);
-  background-color: transparent;
-  cursor: pointer;
-}
 .modal_opened {
   visibility: visible;
   opacity: 1;
@@ -118,7 +105,7 @@
   max-height: 75vh;
   position: relative;
 }
-.modal__preview-close-button {
+.modal__close-button {
   border: none;
   width: 40px;
   height: 40px;
