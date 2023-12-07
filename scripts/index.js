@@ -79,14 +79,6 @@ function handleAddCardFormSubmit(evt) {
   closePopup(addCardModal);
 
 }
-const modalList= document.querySelectorAll(".modal");
-
-modalList.addEventListener("click", (e) => {
-  if (e.target.classList.contains(".modal")){
-    closePopup(modal);
-  }
-})
-
 //event listeners click
 profileEditButton.addEventListener("click", function () {
   profileTitleInput.value = profileTitle.textContent;
