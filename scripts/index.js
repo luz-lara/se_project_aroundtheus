@@ -79,7 +79,13 @@ function handleAddCardFormSubmit(evt) {
   closePopup(addCardModal);
 
 }
+const modalList= document.querySelectorAll(".modal");
 
+modalList.addEventListener("click", (e) => {
+  if (e.target.classList.contains(".modal_opened")){
+    closePopup(modalList);
+  }
+})
 
 //event listeners click
 profileEditButton.addEventListener("click", function () {
