@@ -44,7 +44,6 @@ const addCardCloseButton = addCardModal.querySelector(".modal__close-button");
 const cardListEl = document.querySelector(".gallery__list");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
-const closeButtons = document.querySelectorAll(".modal__close-button");
 //preview image modal
 const previewImageModal = document.querySelector("#preview-image-modal");
 const previewCloseButton = document.querySelector(
@@ -98,10 +97,7 @@ profileEditButton.addEventListener("click", function () {
 profileAddButton.addEventListener("click", () => {
   openModal(addCardModal);
 });
-closeButtons.forEach((button) => {
-  const popup = button.closest(".modal");
-  button.addEventListener("click", () => closePopup(popup));
-});
+
 
 closeEditButton.addEventListener("click", () => {
   closePopup(profileModal);
