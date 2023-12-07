@@ -82,8 +82,8 @@ function handleAddCardFormSubmit(evt) {
 const modalList= document.querySelectorAll(".modal");
 
 modalList.addEventListener("click", (e) => {
-  if (e.target.classList.contains(".modal_opened")){
-    closePopup(modalList);
+  if (e.target.classList.contains(".modal")){
+    closePopup(modal);
   }
 })
 
