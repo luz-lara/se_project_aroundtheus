@@ -59,7 +59,7 @@ if (e.key === "Escape" || e.key === "Esc"){
 function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener('keydown',keyHandler);
- modal.addEventListener("click",handleOverlay);
+  document.addEventListener("click",handleOverlay);
 }
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
@@ -83,7 +83,7 @@ function handleAddCardFormSubmit(evt) {
 }
 function handleOverlay (evt) {
 const openedModal =document.querySelector(".modal_opened");
-if (e.target === openedModal)
+if (evt.target === openedModal)
 closePopup(openedModal);
 }
 //event listeners click
