@@ -59,11 +59,13 @@ if (e.key === "Escape" || e.key === "Esc"){
 function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener('keydown',keyHandler);
- 
+ modal.addEventListener("click",handleOverlay);
 }
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown",keyHandler);
+  document.removeEventListener("click",handleOverlay);
+
 }
 function renderCard(cardData, cardListEl) {
   const cardElement = getCardElement(cardData);
@@ -78,6 +80,11 @@ function handleAddCardFormSubmit(evt) {
   renderCard({ name, link }, cardListEl);
   closePopup(addCardModal);
 
+}
+function handleOverlay (evt) {
+const openedModal =document.querySelector(".modal_opened");
+if (e.target === openedModal)
+closePopup(openedModal);
 }
 //event listeners click
 profileEditButton.addEventListener("click", function () {
