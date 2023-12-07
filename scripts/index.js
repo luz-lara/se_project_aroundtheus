@@ -100,7 +100,7 @@ profileAddButton.addEventListener("click", () => {
 });
 closeButtons.forEach((button) => {
   const popup = button.closest(".modal");
-  button.addEventListener("click", () => closePopup(modal));
+  button.addEventListener("click", () => closePopup(popup));
 });
 
 closeEditButton.addEventListener("click", () => {
