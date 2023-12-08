@@ -35,8 +35,8 @@ function showInputError(formEl,inputEl,{inputErrorClass,errorClass}){
   };
   
   function setEventListeners(formEl, options) {
-  const { inputSelector} = options;
-  const submitButton = formEl.querySelector(".modal__button");
+  const { inputSelector, submitButtonSelector} = options;
+  const submitButton = formEl.querySelector(submitButtonSelector);
   const inputEls = [...formEl.querySelectorAll(inputSelector)];
   inputEls.forEach((inputEl) => {
       inputEl.addEventListener("input",(e) => {
