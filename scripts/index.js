@@ -36,7 +36,7 @@ const profileDescriptionInput = document.querySelector(
 const previewModalTitle = document.querySelector(".modal__preview-title");
 const previewImage = document.querySelector(".modal__preview-image");
 const profileForm = document.forms["profile-form"];
-const closeEditButton = profileModal.querySelector(".modal__close-button");
+const closeEditButton = profileModal.querySelector(".profile__edit-button");
 //add card modal
 const addCardModal = document.querySelector("#profile-add-modal");
 const profileAddButton = document.querySelector(".profile__add-button");
