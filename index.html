@@ -57,20 +57,22 @@
             class="modal__input modal__input-name"
             placeholder="Name"
             id="owner-name"
-            minlength=2
-            maxlength=40
-            required/>
-            <span class="modal__error" id="owner-name-error"></span>
+            minlength="2"
+            maxlength="40"
+            required
+          />
+          <span class="modal__error" id="owner-name-error"></span>
           <input
             type="text"
             name="description"
             class="modal__input modal__input-description"
             id="owner-description"
             placeholder="Description"
-            minlength=2
-            maxlength=200
-            required/>
-            <span class="modal__error" id="owner-description-error"></span>
+            minlength="2"
+            maxlength="200"
+            required
+          />
+          <span class="modal__error" id="owner-description-error"></span>
           <button class="modal__button">Save</button>
         </form>
       </div>
@@ -87,8 +89,8 @@
             class="modal__input modal__input-title"
             id="card-title"
             placeholder="Title"
-            minlength=1
-            maxlength=30
+            minlength="1"
+            maxlength="30"
             required
           />
           <span class="modal__error" id="card-title-error"></span>
@@ -109,7 +111,9 @@
     <!--Preview modal-->
     <div class="modal popup" id="preview-image-modal">
       <div class="modal__preview-container">
-        <button class=" modal__close-button modal__preview-close-button"></button>
+        <button
+          class="modal__close-button modal__preview-close-button"
+        ></button>
         <img src="#" class="modal__preview-image" alt="" />
         <p class="modal__preview-title"></p>
       </div>
