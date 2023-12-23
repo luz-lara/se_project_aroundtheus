@@ -3,47 +3,66 @@ export default class FormValidator {
         this._config = config;
         this._form = form;
     }
-    _checkInputValidity(inputEl){
-        if(!inputEl.validity.valid){
+    _checkInputValidity(inputEl) {
+        if (!inputEl.validity.valid) {
             this._showInputError(inputEl);
-        }else{
+        } else {
             this._hideInputError(inputEl);
         }
     }
-    _showInputError(inputEl){
+    _showInputError(inputEl) {
         const errorMessageEl = this._form.querySelector(`#${inputEl.id}-error`);
         inputEl.classList.add(this._config.inputErrorClass);
         errorMessageEl.textContent = inputEl.validationMessage;
         errorMessageEl.classList.add(this._config.errorClass);
-       ;
+        ;
     }
-    _hideInputError(inputEl){
-        const errorMessageEl =this._form.querySelector(`#${inputEl.id}-error`);
+    _hideInputError(inputEl) {
+        const errorMessageEl = this._form.querySelector(`#${inputEl.id}-error`);
         inputEl.classList.remove(this._config.inputErrorClass);
         errorMessageEl.textContent = "";
         errorMessageEl.classList.remove(this._config.errorClass);
     }
+    _toogleButtonState() {
+        let foundInvalid = false;
+        this._input.forEach((inputEl) => {
+            if (!inputEl.validity.valid) {
+                foundInvalid = true;
+              }
+        })
+        if (foundInvalid) {
+            this._submitButton.classList.add(this._config.inactiveButtonClass);
+            this._submitButton.disabled = true;
+          } else {
+            this._submitButton.classList.remove(this._config.inactiveButtonClass);
+            this._submitButton.disabled = false;
+          }
+    }
+
     _setEventListeners() {
         this._input = [...this._form.querySelectorAll(this._config.inputSelector)];
         this._input.forEach((inputEl) => {
-            inputEl.addEventListener("input", () => { 
+            inputEl.addEventListener("input", () => {
                 this._checkInputValidity(inputEl);
-             }
+                this._toogleButtonState(inputEl);
+            }
 
             )
         }
         )
     }
-   
-    enableValidation() {
+
+    enableValidation() 
+
+    {
+        this._submitButton=this._form.querySelector(this._config.submitButtonSelector);
         this._form.addEventListener("submit", (e) => {
             e.preventDefault();
         }
         )
         this._setEventListeners();
-    }
+    
 
 }
 
-
-
+}
