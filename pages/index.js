@@ -1,4 +1,5 @@
 import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
 
 const initialCards = [
   {
@@ -27,6 +28,14 @@ const initialCards = [
   },
 ];
 
+const config = {
+  formSelector: "modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
 
 
 //profile edit modal
@@ -45,6 +54,12 @@ const addCardModal = document.querySelector("#profile-add-modal");
 const profileAddButton = document.querySelector(".profile__add-button");
 const addCardCloseButton = addCardModal.querySelector(".modal__close-button");
 const cardListEl = document.querySelector(".gallery__list");
+
+
+
+
+
+
 
 //preview image modal 
 const previewModalTitle = document.querySelector(".modal__preview-title");
@@ -124,3 +139,7 @@ initialCards.forEach((data) => {
   });
   cardListEl.prepend(cardElements.viewCard());
 });
+const profileformConfig = new FormValidator(config,profileModal);
+profileformConfig.enableValidation();
+const addCardformConfig= new FormValidator(config,addCardModal);
+addCardformConfig.enableValidation();

@@ -45,12 +45,12 @@ function setEventListeners(formEl, options) {
   });
 }
 
-function enableValidation(options) {
-  const formEls = [...document.querySelectorAll(options.formSelector)];
-  formEls.forEach((formEl) => {
-    formEl.addEventListener("submit", (e) => {
-      e.preventDefault();
-    });
+//function enableValidation(options) {
+  //const formEls = [...document.querySelectorAll(options.formSelector)];
+  //formEls.forEach((formEl) => {
+   // formEl.addEventListener("submit", (e) => {
+   //   e.preventDefault();
+    //});
 
     //look for all inputs inside of the form
     //loop through all the inputs to see if all are valid
@@ -61,16 +61,9 @@ function enableValidation(options) {
     // if all inputs are valid
     //- enable button
     //reset error messages
-    setEventListeners(formEl, options);
-  });
-}
-const config = {
-  formSelector: ".modal__form",
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: ".modal__input_type_error",
-  errorClass: ".modal__error_visible",
-};
+  //  setEventListeners(formEl, options);
+  //});
+//}
 
-enableValidation(config);
+
+//enableValidation(config);
