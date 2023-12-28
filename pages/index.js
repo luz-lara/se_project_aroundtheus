@@ -94,10 +94,12 @@ function handleAddCardFormSubmit(evt) {
   evt.preventDefault();
   const name = cardTitle.value;
   const link = cardLink.value;
+  renderCard({name,link});
   addCardForm.reset();
 
   closePopup(addCardModal);
 }
+
 function closeModalByClick(evt) {
   if (evt.target.classList.contains("modal_opened")) closePopup(evt.target);
 }
@@ -120,6 +122,14 @@ addCardCloseButton.addEventListener("click", () => closePopup(addCardModal));
 previewCloseButton.addEventListener("click", () =>
   closePopup(previewImageModal)
 );
+function renderCard (cardData){
+  const newCard = new Card (cardData,"#card-template",() => {
+    previewImage.src = data.link;
+    previewModalTitle.textContent = data.name;
+    previewImage.alt = data.name;
+  })
+  cardListEl.prepend(newCard.viewCard());
+  }
 //event listeners submit
 profileForm.addEventListener("submit", (e) => {
   e.preventDefault();
