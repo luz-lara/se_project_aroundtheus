@@ -95,9 +95,10 @@ function handleAddCardFormSubmit(evt) {
   const name = cardTitle.value;
   const link = cardLink.value;
   renderCard({name,link});
+  
+  closePopup(addCardModal);
   addCardForm.reset();
 
-  closePopup(addCardModal);
 }
 
 function closeModalByClick(evt) {
@@ -124,9 +125,10 @@ previewCloseButton.addEventListener("click", () =>
 );
 function renderCard (cardData){
   const newCard = new Card (cardData,"#card-template",() => {
-    previewImage.src = data.link;
-    previewModalTitle.textContent = data.name;
-    previewImage.alt = data.name;
+    previewImage.src = cardData.link;
+    previewModalTitle.textContent = cardData.name;
+    previewImage.alt = cardData.name;
+    openModal(previewImageModal);
   })
   cardListEl.prepend(newCard.viewCard());
   }
