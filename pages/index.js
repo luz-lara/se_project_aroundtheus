@@ -132,6 +132,8 @@ profileForm.addEventListener("submit", (e) => {
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
   closePopup(profileModal);
+  profileForm.reset();
+  profileformConfig.toogleButtonState();
 });
 addCardForm.addEventListener("submit", handleAddCardFormSubmit);
 
