@@ -91,6 +91,7 @@ function handleAddCardFormSubmit(evt) {
   
   closePopup(addCardModal);
   addCardForm.reset();
+  addCardformConfig.toogleButtonState();
 
 }
 

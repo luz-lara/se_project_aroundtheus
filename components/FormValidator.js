@@ -52,7 +52,9 @@ export default class FormValidator {
         }
         )
     }
-
+    toogleButtonState(){
+        this._toogleButtonState();
+    }
     enableValidation() 
 
     {
