@@ -55,12 +55,6 @@ const profileAddButton = document.querySelector(".profile__add-button");
 const addCardCloseButton = addCardModal.querySelector(".modal__close-button");
 const cardListEl = document.querySelector(".gallery__list");
 
-
-
-
-
-
-
 //preview image modal 
 const previewModalTitle = document.querySelector(".modal__preview-title");
 const previewImage = document.querySelector(".modal__preview-image");
@@ -68,7 +62,6 @@ const previewImageModal = document.querySelector("#preview-image-modal");
 const previewCloseButton = document.querySelector(
   ".modal__preview-close-button"
 );
-//form data
 const cardTitle = addCardModal.querySelector(".modal__input-title");
 const cardLink = addCardModal.querySelector(".modal__input-url");
 const addCardForm = document.forms["add-card-form"];
@@ -141,7 +134,6 @@ profileForm.addEventListener("submit", (e) => {
 });
 addCardForm.addEventListener("submit", handleAddCardFormSubmit);
 
-
 initialCards.forEach((data) => {
   const cardElements = new Card(data, "#card-template", () => {
     previewImage.src = data.link;
@@ -151,7 +143,7 @@ initialCards.forEach((data) => {
   });
   cardListEl.prepend(cardElements.viewCard());
 });
-const profileformConfig = new FormValidator(config,profileModal);
+const profileformConfig = new FormValidator(config, profileModal);
 profileformConfig.enableValidation();
-const addCardformConfig= new FormValidator(config,addCardModal);
+const addCardformConfig = new FormValidator(config, addCardModal);
 addCardformConfig.enableValidation();

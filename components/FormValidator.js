@@ -36,6 +36,7 @@ export default class FormValidator {
           } else {
             this._submitButton.classList.remove(this._config.inactiveButtonClass);
             this._submitButton.disabled = false;
+
           }
     }
 
@@ -58,6 +59,8 @@ export default class FormValidator {
         this._submitButton=this._form.querySelector(this._config.submitButtonSelector);
         this._form.addEventListener("submit", (e) => {
             e.preventDefault();
+
+            
         }
         )
         this._setEventListeners();
