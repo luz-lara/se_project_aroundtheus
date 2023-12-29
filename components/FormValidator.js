@@ -28,16 +28,16 @@ export default class FormValidator {
         this._input.forEach((inputEl) => {
             if (!inputEl.validity.valid) {
                 foundInvalid = true;
-              }
+            }
         })
         if (foundInvalid) {
             this._submitButton.classList.add(this._config.inactiveButtonClass);
             this._submitButton.disabled = true;
-          } else {
+        } else {
             this._submitButton.classList.remove(this._config.inactiveButtonClass);
             this._submitButton.disabled = false;
 
-          }
+        }
     }
 
     _setEventListeners() {
@@ -52,22 +52,20 @@ export default class FormValidator {
         }
         )
     }
-    toogleButtonState(){
+    toogleButtonState() {
         this._toogleButtonState();
     }
-    enableValidation() 
-
-    {
-        this._submitButton=this._form.querySelector(this._config.submitButtonSelector);
+    enableValidation() {
+        this._submitButton = this._form.querySelector(this._config.submitButtonSelector);
         this._form.addEventListener("submit", (e) => {
             e.preventDefault();
 
-            
+
         }
         )
         this._setEventListeners();
-    
 
-}
+
+    }
 
 }

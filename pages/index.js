@@ -87,8 +87,8 @@ function handleAddCardFormSubmit(evt) {
   evt.preventDefault();
   const name = cardTitle.value;
   const link = cardLink.value;
-  renderCard({name,link});
-  
+  renderCard({ name, link });
+
   closePopup(addCardModal);
   addCardForm.reset();
   addCardformConfig.toogleButtonState();
@@ -117,15 +117,15 @@ addCardCloseButton.addEventListener("click", () => closePopup(addCardModal));
 previewCloseButton.addEventListener("click", () =>
   closePopup(previewImageModal)
 );
-function renderCard (cardData){
-  const newCard = new Card (cardData,"#card-template",() => {
+function renderCard(cardData) {
+  const newCard = new Card(cardData, "#card-template", () => {
     previewImage.src = cardData.link;
     previewModalTitle.textContent = cardData.name;
     previewImage.alt = cardData.name;
     openModal(previewImageModal);
   })
   cardListEl.prepend(newCard.viewCard());
-  }
+}
 //event listeners submit
 profileForm.addEventListener("submit", (e) => {
   e.preventDefault();
