@@ -65,6 +65,10 @@ const previewCloseButton = document.querySelector(
 const cardTitle = addCardModal.querySelector(".modal__input-title");
 const cardLink = addCardModal.querySelector(".modal__input-url");
 const addCardForm = document.forms["add-card-form"];
+const closeButtons=document.querySelectorAll(".modal__close-button");
+closeButtons.addEventListener("click",  () => {
+  console.log("listening to click");
+})
 //functions
 function handleEscape(e) {
   if (e.key === "Escape" || e.key === "Esc") {
@@ -127,12 +131,6 @@ function createCard(cardData) {
   return cardElements.viewCard();
 }
 function renderCard(cardData) {
-  /*const newCard = new Card(cardData, "#card-template", () => {
-    previewImage.src = cardData.link;
-    previewModalTitle.textContent = cardData.name;
-    previewImage.alt = cardData.name;
-    openModal(previewImageModal);
-  })*/
   const newCard=createCard(cardData)
   cardListEl.prepend(newCard);
 }
@@ -148,17 +146,10 @@ profileForm.addEventListener("submit", (e) => {
 addCardForm.addEventListener("submit", handleAddCardFormSubmit);
 
 initialCards.forEach((cardData) => {
- /* const cardElements = new Card(data, "#card-template", () => {
-    previewImage.src = data.link;
-    previewModalTitle.textContent = data.name;
-    previewImage.alt = data.name;
-    openModal(previewImageModal);
-  });
-  */
  const cardElement =createCard(cardData)
   cardListEl.prepend(cardElement);
 });
-const profileformConfig = new FormValidator(config, profileModal);
-profileformConfig.enableValidation();
-const addCardformConfig = new FormValidator(config, addCardModal);
-addCardformConfig.enableValidation();
+const profileFormValidator = new FormValidator(config, profileModal);
+profileFormValidator.enableValidation();
+const addCardFormValidator = new FormValidator(config, addCardModal);
+addCardFormValidator.enableValidation();
