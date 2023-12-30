@@ -88,10 +88,9 @@ function handleAddCardFormSubmit(evt) {
   const name = cardTitle.value;
   const link = cardLink.value;
   renderCard({ name, link });
-
   closePopup(addCardModal);
   addCardForm.reset();
-  addCardformConfig.toogleButtonState();
+  addCardformConfig.toggleButtonState();
 
 }
 
@@ -133,7 +132,7 @@ profileForm.addEventListener("submit", (e) => {
   profileDescription.textContent = profileDescriptionInput.value;
   closePopup(profileModal);
   profileForm.reset();
-  profileformConfig.toogleButtonState();
+  profileformConfig.toggleButtonState();
 });
 addCardForm.addEventListener("submit", handleAddCardFormSubmit);
 

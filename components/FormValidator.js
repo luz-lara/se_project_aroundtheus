@@ -23,9 +23,9 @@ export default class FormValidator {
         errorMessageEl.textContent = "";
         errorMessageEl.classList.remove(this._config.errorClass);
     }
-    _toogleButtonState() {
+    toggleButtonState() {
         let foundInvalid = false;
-        this._input.forEach((inputEl) => {
+        this._inputs.forEach((inputEl) => {
             if (!inputEl.validity.valid) {
                 foundInvalid = true;
             }
@@ -41,22 +41,20 @@ export default class FormValidator {
     }
 
     _setEventListeners() {
-        this._input = [...this._form.querySelectorAll(this._config.inputSelector)];
-        this._input.forEach((inputEl) => {
+        this._submitButton = this._form.querySelector(this._config.submitButtonSelector);
+        this._inputs = [...this._form.querySelectorAll(this._config.inputSelector)];
+        this._inputs.forEach((inputEl) => {
             inputEl.addEventListener("input", () => {
                 this._checkInputValidity(inputEl);
-                this._toogleButtonState(inputEl);
+                toggleButtonState(inputEl);
             }
 
             )
         }
         )
     }
-    toogleButtonState() {
-        this._toogleButtonState();
-    }
+
     enableValidation() {
-        this._submitButton = this._form.querySelector(this._config.submitButtonSelector);
         this._form.addEventListener("submit", (e) => {
             e.preventDefault();
 

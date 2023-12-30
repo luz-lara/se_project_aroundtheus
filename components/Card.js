@@ -25,7 +25,6 @@ export default class Card {
             .cloneNode(true);
         this._cardTitle = this._cardElement.querySelector(".card__title");
         this._cardImageElement = this._cardElement.querySelector(".card__image");
-        this._cardListEl = document.querySelector(".gallery__list");
         this._deleteButton = this._cardElement.querySelector(".card__delete-button");
         this._likeButton = this._cardElement.querySelector(".card__like-button")
         //filling the template 
