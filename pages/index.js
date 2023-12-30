@@ -147,14 +147,16 @@ profileForm.addEventListener("submit", (e) => {
 });
 addCardForm.addEventListener("submit", handleAddCardFormSubmit);
 
-initialCards.forEach((data) => {
-  const cardElements = new Card(data, "#card-template", () => {
+initialCards.forEach((cardData) => {
+ /* const cardElements = new Card(data, "#card-template", () => {
     previewImage.src = data.link;
     previewModalTitle.textContent = data.name;
     previewImage.alt = data.name;
     openModal(previewImageModal);
   });
-  cardListEl.prepend(cardElements.viewCard());
+  */
+ const cardElement =createCard(cardData)
+  cardListEl.prepend(cardElement);
 });
 const profileformConfig = new FormValidator(config, profileModal);
 profileformConfig.enableValidation();
