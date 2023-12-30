@@ -116,11 +116,11 @@ addCardCloseButton.addEventListener("click", () => closePopup(addCardModal));
 previewCloseButton.addEventListener("click", () =>
   closePopup(previewImageModal)
 );
-function createCard(item) {
-  const cardElements = new Card(data, "#card-template", () => {
-    previewImage.src = data.link;
-    previewModalTitle.textContent = data.name;
-    previewImage.alt = data.name;
+function createCard(cardData) {
+  const cardElements = new Card(cardData, "#card-template", () => {
+    previewImage.src = cardData.link;
+    previewModalTitle.textContent = cardData.name;
+    previewImage.alt = cardData.name;
     openModal(previewImageModal);
     
   });
