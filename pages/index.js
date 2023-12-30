@@ -134,7 +134,7 @@ function renderCard(cardData) {
     openModal(previewImageModal);
   })*/
   const newCard=createCard(cardData)
-  cardListEl.prepend(newCard.viewCard());
+  cardListEl.prepend(newCard);
 }
 //event listeners submit
 profileForm.addEventListener("submit", (e) => {
