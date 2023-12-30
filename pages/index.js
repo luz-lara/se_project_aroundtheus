@@ -66,10 +66,11 @@ const cardTitle = addCardModal.querySelector(".modal__input-title");
 const cardLink = addCardModal.querySelector(".modal__input-url");
 const addCardForm = document.forms["add-card-form"];
 const closeButtons=document.querySelectorAll(".modal__close-button");
-closeButtons.addEventListener("click",  () => {
-  console.log("listening to click");
-})
+//closeButtons.addEventListener("click",  () => {
+ // console.log("listening to click");
+//})
 //functions
+console.log(closeButtons);
 function handleEscape(e) {
   if (e.key === "Escape" || e.key === "Esc") {
     const modal = document.querySelector(".modal_opened");
