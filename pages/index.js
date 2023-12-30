@@ -116,13 +116,24 @@ addCardCloseButton.addEventListener("click", () => closePopup(addCardModal));
 previewCloseButton.addEventListener("click", () =>
   closePopup(previewImageModal)
 );
+function createCard(item) {
+  const cardElements = new Card(data, "#card-template", () => {
+    previewImage.src = data.link;
+    previewModalTitle.textContent = data.name;
+    previewImage.alt = data.name;
+    openModal(previewImageModal);
+    
+  });
+  return cardElements.viewCard();
+}
 function renderCard(cardData) {
-  const newCard = new Card(cardData, "#card-template", () => {
+  /*const newCard = new Card(cardData, "#card-template", () => {
     previewImage.src = cardData.link;
     previewModalTitle.textContent = cardData.name;
     previewImage.alt = cardData.name;
     openModal(previewImageModal);
-  })
+  })*/
+  const newCard=createCard(cardData)
   cardListEl.prepend(newCard.viewCard());
 }
 //event listeners submit
