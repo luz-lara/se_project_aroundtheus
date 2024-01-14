@@ -113,7 +113,7 @@ profileAddButton.addEventListener("click", () => {
   openModal(addCardModal);
 });
 
-function createCard(cardData) {
+/*function createCard(cardData) {
   const cardElements = new Card(cardData, "#card-template", () => {
     previewImage.src = cardData.link;
     previewModalTitle.textContent = cardData.name;
@@ -126,6 +126,7 @@ function renderCard(cardData) {
   const newCard = createCard(cardData);
   cardListEl.prepend(newCard);
 }
+*/
 //event listeners submit
 profileForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -137,11 +138,25 @@ profileForm.addEventListener("submit", (e) => {
 });
 addCardForm.addEventListener("submit", handleAddCardFormSubmit);
 
-initialCards.forEach((cardData) => {
+const defaultCardList = new Section({
+  items: initialCards,
+  renderer: (item) => {
+    const cardElement = new Card(item, "#card-template");
+    const card = cardElement.viewCard();
+    defaultCardList.addItem(card);
+  }
+}, ".gallery__list");
+
+
+
+/*initialCards.forEach((cardData) => {
   const cardElement = createCard(cardData);
   cardListEl.prepend(cardElement);
 });
+*/
 const profileFormValidator = new FormValidator(config, profileModal);
 profileFormValidator.enableValidation();
 const addCardFormValidator = new FormValidator(config, addCardModal);
 addCardFormValidator.enableValidation();
+
+defaultCardList.renderItems();

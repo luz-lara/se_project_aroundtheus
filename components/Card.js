@@ -1,15 +1,15 @@
 export default class Card {
-  constructor(data, cardSelector, handleImageByClick) {
+  constructor(data, cardSelector) {
     this._data = data;
     this._cardSelector = cardSelector;
-    this._handleImageByClick = handleImageByClick;
+    //this._handleImageByClick = handleImageByClick;
   }
   _setEventListeners() {
     this._deleteButton.addEventListener("click", () => this._deleteCard());
     this._likeButton.addEventListener("click", () => this._toggleLikeButton());
-    this._cardImageElement.addEventListener("click", () =>
-      this._handleImageByClick()
-    );
+    //this._cardImageElement.addEventListener("click", () =>
+    //  this._handleImageByClick()
+   // );
   }
   _toggleLikeButton() {
     this._likeButton.classList.toggle("card__like-button_active");
