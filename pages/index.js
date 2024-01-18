@@ -1,6 +1,7 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 
 const initialCards = [
@@ -141,7 +142,10 @@ addCardForm.addEventListener("submit", handleAddCardFormSubmit);
 const defaultCardList = new Section({
   items: initialCards,
   renderer: (item) => {
-    const cardElement = new Card(item, "#card-template");
+    const cardElement = new Card(item, "#card-template", () => {
+      const previewImagePopup = new PopupWithImage("#preview-image-modal")
+       previewImagePopup.open(item);
+    });
     const card = cardElement.viewCard();
     defaultCardList.addItem(card);
   }
