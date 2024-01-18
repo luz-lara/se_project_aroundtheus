@@ -66,13 +66,13 @@ const cardLink = addCardModal.querySelector(".modal__input-url");
 const addCardForm = document.forms["add-card-form"];
 const closeButtons = document.querySelectorAll(".modal__close-button");
 
-closeButtons.forEach((button) => {
+/*closeButtons.forEach((button) => {
   const popup = button.closest(".modal");
   button.addEventListener("click", () => {
     closePopup(popup);
   });
 });
-
+*/
 function handleEscape(e) {
   if (e.key === "Escape" || e.key === "Esc") {
     const modal = document.querySelector(".modal_opened");
@@ -151,7 +151,8 @@ const defaultCardList = new Section({
   }
 }, ".gallery__list");
 
-
+const popupClose= new Popup ("#profile-edit-modal");
+popupClose.setEventListeners();
 
 /*initialCards.forEach((cardData) => {
   const cardElement = createCard(cardData);

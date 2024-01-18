@@ -14,6 +14,13 @@ export default class Popup {
         this._popup.classList.remove("modal_opened");
     }
     setEventListeners(){
+        this._closebuttons=document.querySelectorAll(".modal__close-button");
+        this._closebuttons.forEach((button) => {
+            const popup = button.closest(popupSelector);
+            button.addEventListener("click", () => {
+              close(popup);
 
+            });
+          });
     }
 }
