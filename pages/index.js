@@ -151,8 +151,8 @@ const defaultCardList = new Section({
   }
 }, ".gallery__list");
 
-const popupClose= new Popup ("#profile-edit-modal");
-popupClose.setEventListeners();
+//const popupClose= new Popup ("#profile-edit-modal");
+//popupClose.setEventListeners();
 
 /*initialCards.forEach((cardData) => {
   const cardElement = createCard(cardData);
