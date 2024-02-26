@@ -145,6 +145,7 @@ const defaultCardList = new Section({
     const cardElement = new Card(item, "#card-template", () => {
       const previewImagePopup = new PopupWithImage("#preview-image-modal")
        previewImagePopup.open(item);
+       previewImagePopup.setEventListeners();
     });
     const card = cardElement.viewCard();
     defaultCardList.addItem(card);
