@@ -5,24 +5,23 @@ export default class PopupWithForm extends Popup {
         super({popupSelector});
         this._popupForm=this._popup.querySelector(".modal__form");
         this._handleFormSubmit=handleFormSubmit;
-        this._inputList=[...this._popupForm.querySelectorAll(".modal__input")];
+        this._formInputs=this._popupForm.querySelectorAll(".modal__input");
     }
-    close(){
-        super.close();
-        this.popupForm.reset();
-        console.log("listening");
-    }
+ 
     _getInputValues(){
-        const data={};
-        this._inputList.forEach((inputElement)=>{
-            data[inputElement.name]=inputElement.value;
+        const inputObject={};
+        this._formInputs.forEach((input)=>{
+            inputObject[input.name]=input.value;
         });
-        return data;
+        return inputObject;
     }
     setEventListener(){
-        this._popupForm.addEventListener("submit",()=>{
-            this._handleFormSubmit(this._getInputValues());
-        });
         super.setEventListeners();
+        //submit event 
+        this._popupForm.addEventListener("submit",(event)=>{
+            event.preventDefault();
+            this._handleFormSubmit(this._getInputValues());
+            this._popupForm.reset();
+        });
     }
 }

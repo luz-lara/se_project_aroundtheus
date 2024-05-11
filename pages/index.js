@@ -32,12 +32,13 @@ const initialCards = [
 ];
 
 const config = {
-  formSelector: "modal__form",
+  formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",
   inactiveButtonClass: "modal__button_disabled",
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
+  modalAddCard:"#profile-add-modal",
 };
 
 //profile edit modal
@@ -113,8 +114,16 @@ profileEditButton.addEventListener("click", function () {
 profileAddButton.addEventListener("click", () => {
   openModal(addCardModal);
 });
+//add card 
+const addCardPopup=new PopupWithForm(config.modalAddCard,(data)=>{
+  const newCard=createCard(data);
+  addCardPopup.close();
+  cardSection.addItem(newCard);
+})
+//add card listeners 
+addCardPopup.setEventListeners();
 
-/*function createCard(cardData) {
+function createCard(cardData) {
   const cardElements = new Card(cardData, "#card-template", () => {
     previewImage.src = cardData.link;
     previewModalTitle.textContent = cardData.name;
@@ -127,7 +136,8 @@ function renderCard(cardData) {
   const newCard = createCard(cardData);
   cardListEl.prepend(newCard);
 }
-*/
+
+
 //event listeners submit
 profileForm.addEventListener("submit", (e) => {
   e.preventDefault();
