@@ -1,9 +1,7 @@
 export default class Popup {
     constructor({ popupSelector }) {
         this._popup = document.querySelector(popupSelector);
-
     }
-
 
     open() {
         this._popup.classList.add("modal_opened");
@@ -11,6 +9,7 @@ export default class Popup {
     };
     close() {
         this._popup.classList.remove("modal_opened");
+        document.removeEventListener("keydown", this._handleEcsClose);
     }
     _handleEscClose = (e) => {
         if (e.key === "Escape" || e.key === "Esc") {
@@ -19,6 +18,11 @@ export default class Popup {
     };
 
     setEventListeners() {
+        this._popup
+        .querySelector(".modal__close-button")
+        .addEventListener("click",()=>{
+            this.close();
+        });
         // Close the popup when users click on the shaded area outside the modal
         this._popup.addEventListener("click", (event) => {
             if (event.target === event.currentTarget) {

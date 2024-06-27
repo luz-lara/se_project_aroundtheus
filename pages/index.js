@@ -94,6 +94,9 @@ function renderCard(cardData) {
   const newCard = createCard(cardData);
   cardListEl.prepend(newCard);
 }
+function handleImageClick(name, link) {
+  cardImagePopup.open(name, link);
+}
 
 
 /*                                                                          */
@@ -132,13 +135,13 @@ const defaultCardList = new Section({
   renderer:renderCard,
 },
 ".gallery__list");
-defaultCardList.renderItems;
 
 const cardImagePopup = new PopupWithImage("#preview-image-modal");
 cardImagePopup.setEventListeners();
 
-
-
+/*                                                                          */
+/*                                FORM VALIDATORS                           */
+/*                                                                          */
 
 const profileFormValidator = new FormValidator(config, profileModal);
 profileFormValidator.enableValidation();
