@@ -2,14 +2,13 @@ import Popup from "../components/Popup.js";
 
 export default class PopupWithImage extends Popup {
   constructor(popupSelector) {
-    super(popupSelector);
+    super({popupSelector});
+    this._cardImage = this._popup.querySelector(".modal__preview-image");
   }
-  open(data) {
-    this._previewModalTitle = document.querySelector(".modal__preview-title");
-    this._previewImage = document.querySelector(".modal__preview-image");
-    this._previewImage.src = data.link;
-    this._previewModalTitle.textContent = data.name;
-    this._previewImage.alt = data.name;
+  open(name,link) {
+    this._cardImage.src = link;
+    //this._previewModalTitle.textContent = data.name;
+    this._cardImage.alt = name;
     super.open();
   }
   setEventListeners(){
