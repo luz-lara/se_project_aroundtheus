@@ -4,6 +4,7 @@ import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import { initialCards, config } from "../utils/constants.js";
+import UserInfo from "../components/UserInfo.js";
 
 /*                                                                          */
 /*                                PROFILE CONSTANTS                         */
@@ -61,18 +62,12 @@ function openModal(modal) {
   document.addEventListener("keydown", handleEscape);
   document.addEventListener("click", closeModalByClick);
 }
-function closePopup(modal) {
-  modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", handleEscape);
-  document.removeEventListener("click", closeModalByClick);
-}
 
-function handleAddCardFormSubmit(evt) {
-  evt.preventDefault();
-  const name = cardTitle.value;
-  const link = cardLink.value;
+function handleFormSubmit(inputValues) {
+  const name = inputValues.title;
+  const link = inputValues.link;
   renderCard({ name, link });
-  closePopup(addCardModal);
+  addCardPopup.close();
   addCardForm.reset();
   addCardFormValidator.toggleButtonState();
 }
@@ -94,8 +89,10 @@ function renderCard(cardData) {
   const newCard = createCard(cardData);
   cardListEl.prepend(newCard);
 }
-function handleImageClick(name, link) {
-  cardImagePopup.open(name, link);
+function fillOutForm(){
+  const userData=profileInfo.getUserInfo();
+  profileTitleInput.value=userData.name;
+  
 }
 
 
@@ -121,14 +118,22 @@ profileForm.addEventListener("submit", (e) => {
   profileForm.reset();
   profileFormValidator.toggleButtonState();
 });
+const profileEditPopup = new PopupWithForm({
+  popupSelector: "#profile-edit-modal",
+  handleFormSubmit: handleFormSubmit,
+});
+profileEditPopup.setEventListeners();
+
+/*---------------------------USER INFO---------------------------------*/
+const profileInfo=new UserInfo("profile__title","profile__description");
+
 /*----------------------------CARD---------------------------------------*/
-const addCardPopup = new PopupWithForm(config.modalAddCard, (data) => {
-  const newCard = createCard(data);
-  addCardPopup.close();
-  cardSection.addItem(newCard);
+const addCardPopup = new PopupWithForm({
+  popupSelector:"#profile-add-modal", 
+  handleFormSubmit:handleFormSubmit,
 })
-addCardPopup.setEventListeners();
-addCardForm.addEventListener("submit", handleAddCardFormSubmit);
+addCardPopup.setEventListener();
+//addCardForm.addEventListener("submit", handleAddCardFormSubmit);
 /*------------------------- Section-------------------------- */
 const defaultCardList = new Section({
   items: initialCards,
