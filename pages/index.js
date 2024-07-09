@@ -43,26 +43,19 @@ const closeButtons = document.querySelectorAll(".modal__close-button");
 
 /*                                                                          */
 /*                             FUNCTIONS                                    */
-/*                                                                          */
-/*closeButtons.forEach((button) => {
-  const popup = button.closest(".modal");
-  button.addEventListener("click", () => {
-    closePopup(popup);
-  });
-});
-*/
+
 function handleEscape(e) {
   if (e.key === "Escape" || e.key === "Esc") {
     const modal = document.querySelector(".modal_opened");
     closePopup(modal);
   }
 }
-function openModal(modal) {
+/*function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", handleEscape);
   document.addEventListener("click", closeModalByClick);
 }
-
+*/
 function handleFormSubmit(inputValues) {
   const name = inputValues.title;
   const link = inputValues.link;
@@ -91,8 +84,8 @@ function renderCard(cardData) {
 }
 function fillOutForm(){
   const userData=profileInfo.getUserInfo();
-  profileTitleInput.value=userData.name;
-  
+  profileTitleInput.value=userData.title;
+  profileDescriptionInput.value=userData.job;
 }
 
 
@@ -101,11 +94,16 @@ function fillOutForm(){
 /*                                                                          */
 
 /*-------------------------------PROFILE ----------------------------------*/
-profileEditButton.addEventListener("click", function () {
+/*profileEditButton.addEventListener("click", function () {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
   openModal(profileModal);
-});
+});*/
+profileEditButton.addEventListener("click",()=>{
+  fillOutForm();
+  profileEditPopup.open();
+})
+
 
 profileAddButton.addEventListener("click", () => {
   openModal(addCardModal);
@@ -114,7 +112,9 @@ profileForm.addEventListener("submit", (e) => {
   e.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  closePopup(profileModal);
+  //closePopup(profileModal);
+profileEditPopup.close();
+  
   profileForm.reset();
   profileFormValidator.toggleButtonState();
 });
@@ -125,7 +125,7 @@ const profileEditPopup = new PopupWithForm({
 profileEditPopup.setEventListeners();
 
 /*---------------------------USER INFO---------------------------------*/
-const profileInfo=new UserInfo("profile__title","profile__description");
+const profileInfo=new UserInfo(".profile__title",".profile__description");
 
 /*----------------------------CARD---------------------------------------*/
 const addCardPopup = new PopupWithForm({
@@ -134,6 +134,9 @@ const addCardPopup = new PopupWithForm({
 })
 addCardPopup.setEventListener();
 //addCardForm.addEventListener("submit", handleAddCardFormSubmit);
+profileAddButton.addEventListener("click",()=>{
+  addCardPopup.open();
+})
 /*------------------------- Section-------------------------- */
 const defaultCardList = new Section({
   items: initialCards,
