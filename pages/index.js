@@ -44,18 +44,6 @@ const closeButtons = document.querySelectorAll(".modal__close-button");
 /*                                                                          */
 /*                             FUNCTIONS                                    */
 
-function handleEscape(e) {
-  if (e.key === "Escape" || e.key === "Esc") {
-    const modal = document.querySelector(".modal_opened");
-    closePopup(modal);
-  }
-}
-/*function openModal(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keydown", handleEscape);
-  document.addEventListener("click", closeModalByClick);
-}
-*/
 function handleFormSubmit(inputValues) {
   const name = inputValues.title;
   const link = inputValues.link;
@@ -65,27 +53,15 @@ function handleFormSubmit(inputValues) {
   addCardFormValidator.toggleButtonState();
 }
 
-function closeModalByClick(evt) {
-  if (evt.target.classList.contains("modal_opened")) closePopup(evt.target);
-}
-
 function createCard(cardData) {
-  const cardElements = new Card(cardData, "#card-template", () => {
-    previewImage.src = cardData.link;
-    previewModalTitle.textContent = cardData.name;
-    previewImage.alt = cardData.name;
-    openModal(previewImageModal);
+  const cardElements = new Card(cardData, "#card-template", (cardData) => {
+    cardImagePopup.open(cardData);
   });
   return cardElements.viewCard();
 }
 function renderCard(cardData) {
   const newCard = createCard(cardData);
   cardListEl.prepend(newCard);
-}
-function fillOutForm(){
-  const userData=profileInfo.getUserInfo();
-  profileTitleInput.value=userData.title;
-  profileDescriptionInput.value=userData.job;
 }
 
 
@@ -100,13 +76,12 @@ function fillOutForm(){
   openModal(profileModal);
 });*/
 profileEditButton.addEventListener("click",()=>{
-  fillOutForm();
   profileEditPopup.open();
 })
 
 
 profileAddButton.addEventListener("click", () => {
-  openModal(addCardModal);
+  addCardPopup.open();
 });
 profileForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -118,12 +93,18 @@ profileEditPopup.close();
   profileForm.reset();
   profileFormValidator.toggleButtonState();
 });
-const profileEditPopup = new PopupWithForm({
-  popupSelector: "#profile-edit-modal",
-  handleFormSubmit: handleFormSubmit,
-});
-profileEditPopup.setEventListeners();
+const profileEditPopup = new PopupWithForm(
+  {
+  popupSelector:"#profile-edit-modal", 
+  handleFormSubmit:handleProfileEditSubmit,
+  }
+);
+profileEditPopup.setEventListener();
 
+function handleProfileEditSubmit (data){
+UserInfo.setUserInfo(data);
+profileEditPopup.close();
+}
 /*---------------------------USER INFO---------------------------------*/
 const profileInfo=new UserInfo(".profile__title",".profile__description");
 

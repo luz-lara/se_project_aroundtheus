@@ -8,7 +8,7 @@ export default class Card {
     this._deleteButton.addEventListener("click", () => this._deleteCard());
     this._likeButton.addEventListener("click", () => this._toggleLikeButton());
     this._cardImageElement.addEventListener("click", () =>
-     this._handleImageByClick()
+     this._handleImageByClick(this._handleImageByClick, this._link)
     );
   }
   _toggleLikeButton() {
@@ -18,7 +18,7 @@ export default class Card {
     this._cardElement.remove();
     this._cardElement = null;
   }
-
+ 
   viewCard() {
     this._cardElement = document
       .querySelector(this._cardSelector)
