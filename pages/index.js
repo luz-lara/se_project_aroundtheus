@@ -39,6 +39,8 @@ const cardTitle = addCardModal.querySelector(".modal__input-title");
 const cardLink = addCardModal.querySelector(".modal__input-url");
 const addCardForm = document.forms["add-card-form"];
 const closeButtons = document.querySelectorAll(".modal__close-button");
+const cardImagePopup = new PopupWithImage("#preview-image-modal");
+cardImagePopup.setEventListeners();
 
 
 /*                                                                          */
@@ -54,11 +56,12 @@ function handleFormSubmit(inputValues) {
 }
 
 function createCard(cardData) {
-  const cardElements = new Card(cardData, "#card-template", (cardData) => {
+  const cardElements = new Card(cardData, "#card-template", () => {
     cardImagePopup.open(cardData);
   });
   return cardElements.viewCard();
 }
+
 function renderCard(cardData) {
   const newCard = createCard(cardData);
   cardListEl.prepend(newCard);
@@ -125,8 +128,6 @@ const defaultCardList = new Section({
 },
 ".gallery__list");
 
-const cardImagePopup = new PopupWithImage("#preview-image-modal");
-cardImagePopup.setEventListeners();
 
 /*                                                                          */
 /*                                FORM VALIDATORS                           */
