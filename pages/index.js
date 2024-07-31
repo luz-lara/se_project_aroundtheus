@@ -79,35 +79,45 @@ function renderCard(cardData) {
   openModal(profileModal);
 });*/
 profileEditButton.addEventListener("click",()=>{
+  const {title,job} = profileInfo.getUserInfo();
+  profileTitleInput.value = title;
+  profileDescriptionInput.value=job;
   profileEditPopup.open();
 })
 
 
 profileAddButton.addEventListener("click", () => {
+
   addCardPopup.open();
 });
-profileForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  profileTitle.textContent = profileTitleInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
+//profileForm.addEventListener("submit", (e) => {
+ // e.preventDefault();
+  //handleProfileEditSubmit();
+
+ // profileTitle.textContent = profileTitleInput.value;
+ // profileDescription.textContent = profileDescriptionInput.value;
   //closePopup(profileModal);
-profileEditPopup.close();
+ // profileEditPopup.close();
   
-  profileForm.reset();
-  profileFormValidator.toggleButtonState();
-});
+ // profileForm.reset();
+ // profileFormValidator.toggleButtonState();
+//});
 const profileEditPopup = new PopupWithForm(
   {
   popupSelector:"#profile-edit-modal", 
-  handleFormSubmit:handleProfileEditSubmit,
-  }
-);
+  handleFormSubmit:({name,description})=>{
+    profileInfo.setUserInfo(name,description);
+  profileEditPopup.close();}
+  
+});
+
 profileEditPopup.setEventListener();
 
-function handleProfileEditSubmit (data){
-UserInfo.setUserInfo(data);
-profileEditPopup.close();
-}
+//function handleProfileEditSubmit ({name,description}){
+//profileInfo.setUserInfo(name,description);
+
+//profileEditPopup.close();
+//}
 /*---------------------------USER INFO---------------------------------*/
 const profileInfo=new UserInfo(".profile__title",".profile__description");
 
