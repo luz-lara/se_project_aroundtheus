@@ -14,7 +14,7 @@ export default class UserInfo{
     setUserInfo(title,description){
        this._nameEl.textContent=title
         this._jobEl.textContent=description
-        console.log("listening")
+        
         //console.log(description);
         //profileTitle.textContent = profileTitleInput.value;
         //profileDescription.textContent = profileDescriptionInput.value;
