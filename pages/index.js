@@ -105,8 +105,8 @@ profileAddButton.addEventListener("click", () => {
 const profileEditPopup = new PopupWithForm(
   {
   popupSelector:"#profile-edit-modal", 
-  handleFormSubmit:({name,description})=>{
-    profileInfo.setUserInfo(name,description);
+  handleFormSubmit:(title,description)=>{
+    profileInfo.setUserInfo(title,description);
   profileEditPopup.close();}
   
 });

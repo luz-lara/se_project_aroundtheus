@@ -11,11 +11,11 @@ export default class UserInfo{
         };
         
     }
-    setUserInfo(name,description){
-       this._nameEl.textContext=name;
-        this._jobEl.textContext=description;
+    setUserInfo(title,description){
+       this._nameEl.textContent=title
+        this._jobEl.textContent=description
         console.log("listening")
-        console.log(description);
+        //console.log(description);
         //profileTitle.textContent = profileTitleInput.value;
         //profileDescription.textContent = profileDescriptionInput.value;
     }
