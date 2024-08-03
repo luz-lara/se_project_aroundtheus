@@ -5,6 +5,7 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import { initialCards, config } from "../utils/constants.js";
 import UserInfo from "../components/UserInfo.js";
+import "./index.css";
 
 /*                                                                          */
 /*                                PROFILE CONSTANTS                         */

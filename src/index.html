@@ -10,7 +10,7 @@
       content="landing page project,responsive landing page"
     />
     <meta name="description" content="Around the U.S" />
-    <link rel="stylesheet" href="./pages/index.css" />
+    
     <link rel="icon" href="favicon.ico" />
     <title>Around the U.S</title>
   </head>
@@ -18,15 +18,14 @@
     <div class="page__content">
       <header class="header">
         <img
-          src="./images/logo.svg"
-          alt="Around the U.S logo"
+          src="<%=require('./images/logo.svg')%>" 
           class="header__logo"
         />
       </header>
       <main class="content">
         <section class="profile page__section">
           <img
-            src="./images/jacques-cousteau.jpg"
+            src="<%=require('./images/jacques-cousteau.jpg')%>"
             alt="jacques-cousteau"
             class="profile__photo"
           />
@@ -129,7 +128,7 @@
         </div>
       </li>
     </template>
-    <script src="./pages/index.js" type="module"></script>
+    <script src="/src/pages/index.js" type="module"></script>
     <!--<script src="./scripts/validation.js"></script> -->
   </body>
 </html>
