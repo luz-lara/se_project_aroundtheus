@@ -11,18 +11,17 @@ import "./index.css";
 /*                                PROFILE CONSTANTS                         */
 /*                                                                          */
 const profileEditButton = document.querySelector(".profile__edit-button");
-const profileModal = document.querySelector("#profile-edit-modal");
 const profileTitleInput = document.querySelector(".modal__input-name");
 const profileDescriptionInput = document.querySelector(
   ".modal__input-description"
 );
 const profileAddButton = document.querySelector(".profile__add-button");
-
+const profileForm = document.forms["profile-form"];
 /*                                                                          */
 /*                                ADD CARD CONSTANTS                        */
 /*                                                                          */
-const addCardModal = document.querySelector("#profile-add-modal");
 const cardListEl = document.querySelector(".gallery__list");
+const addCardForm = document.forms["add-card-form"];
 
 
 /*                                                                          */
@@ -54,7 +53,7 @@ function createCard(cardData) {
 
 function renderCard(cardData) {
   const newCard = createCard(cardData);
-  cardListEl.prepend(newCard);
+  cardSection.addItem(newCard);
 }
 
 
@@ -75,18 +74,7 @@ profileAddButton.addEventListener("click", () => {
 
   addCardPopup.open();
 });
-//profileForm.addEventListener("submit", (e) => {
-// e.preventDefault();
-//handleProfileEditSubmit();
 
-// profileTitle.textContent = profileTitleInput.value;
-// profileDescription.textContent = profileDescriptionInput.value;
-//closePopup(profileModal);
-// profileEditPopup.close();
-
-// profileForm.reset();
-// profileFormValidator.toggleButtonState();
-//});
 const profileEditPopup = new PopupWithForm(
   {
     popupSelector: "#profile-edit-modal",
@@ -111,7 +99,7 @@ profileAddButton.addEventListener("click", () => {
   addCardPopup.open();
 })
 /*------------------------- Section-------------------------- */
-const defaultCardList = new Section({
+const cardSection = new Section({
   items: initialCards,
   renderer: renderCard,
 },
@@ -122,9 +110,9 @@ const defaultCardList = new Section({
 /*                                FORM VALIDATORS                           */
 /*                                                                          */
 
-const profileFormValidator = new FormValidator(config, profileModal);
+const profileFormValidator = new FormValidator(config, profileForm);
 profileFormValidator.enableValidation();
-const addCardFormValidator = new FormValidator(config, addCardModal);
+const addCardFormValidator = new FormValidator(config, addCardForm);
 addCardFormValidator.enableValidation();
 
-defaultCardList.renderItems();
+cardSection.renderItems();
