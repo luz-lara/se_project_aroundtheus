@@ -17,14 +17,14 @@ export default class PopupWithForm extends Popup {
     }
 
 
-setEventListener(){
-    super.setEventListeners();
-    //submit event 
-    this._popupForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        this._handleFormSubmit(this._getInputValues());
-       // this._popupForm.reset();
-    
-    });
-}
+    setEventListener() {
+        super.setEventListeners();
+        //submit event 
+        this._popupForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            this._handleFormSubmit(this._getInputValues());
+            // this._popupForm.reset();
+
+        });
+    }
 }
