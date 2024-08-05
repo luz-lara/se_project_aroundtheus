@@ -20,7 +20,6 @@ const profileForm = document.forms["profile-form"];
 /*                                                                          */
 /*                                ADD CARD CONSTANTS                        */
 /*                                                                          */
-const cardListEl = document.querySelector(".gallery__list");
 const addCardForm = document.forms["add-card-form"];
 
 
