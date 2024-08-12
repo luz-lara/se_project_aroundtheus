@@ -5,6 +5,7 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import { initialCards, config } from "../utils/constants.js";
 import UserInfo from "../components/UserInfo.js";
+import Api from "../components/Api.js";
 import "./index.css";
 
 /*                                                                          */
@@ -85,7 +86,7 @@ const profileEditPopup = new PopupWithForm(
 profileEditPopup.setEventListener();
 
 /*---------------------------USER INFO---------------------------------*/
-const profileInfo = new UserInfo(".profile__title", ".profile__description");
+const profileInfo = new UserInfo(".profile__title", ".profile__description",".profile__photo");
 
 /*----------------------------CARD---------------------------------------*/
 const addCardPopup = new PopupWithForm({
@@ -99,12 +100,39 @@ profileAddButton.addEventListener("click", () => {
 })
 /*------------------------- Section-------------------------- */
 const cardSection = new Section({
-  items: initialCards,
   renderer: renderCard,
 },
   ".gallery__list");
+//Get user user cards
+  const api = new Api({
+    headers: {
+      authorization: "1a37d956-9fa4-4c51-a36f-94e001ed1e8f",
+      "Content-Type": "application/json"
+    }
+  });
+  //GET USER 
+  const GetUser =new  Api({
+    headers: {
+      authorization: "1a37d956-9fa4-4c51-a36f-94e001ed1e8f",
+      "Content-Type": "application/json"
+    }
+  });
+  GetUser.getUserInfo()
+  .then((data)=>{
+    profileInfo.setUserInfo(data.name,data.about,data.avatar)
+  })
+  .catch((err)=>{
+    console.log(err);
+  })
 
 
+api.getInitialCards()
+.then(cards=>{
+  cardSection.renderItems(cards);
+})
+.catch((err) => {
+  console.error(err); 
+});
 /*                                                                          */
 /*                                FORM VALIDATORS                           */
 /*                                                                          */
@@ -114,4 +142,4 @@ profileFormValidator.enableValidation();
 const addCardFormValidator = new FormValidator(config, addCardForm);
 addCardFormValidator.enableValidation();
 
-cardSection.renderItems();
+//cardSection.renderItems();
