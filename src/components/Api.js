@@ -13,13 +13,24 @@ export default class Api {
                 return Promise.reject(`Error: ${res.status}`);
             })
     }
-    getUserInfo() {
-        return fetch("https://around-api.en.tripleten-services.com/v1/users/me",this._options)
-        .then(res => {
+    updateProfile(title,description) {
+        return fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
+            method: "PATCH",
+            headers: {
+              authorization: "1a37d956-9fa4-4c51-a36f-94e001ed1e8f",
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              name: title,
+              about: description
+            })
+          })
+          .then(res => {
             if (res.ok) {
                 return res.json();
             }
             return Promise.reject(`Error: ${res.status}`);
         })
-    }
+        
+}
 }

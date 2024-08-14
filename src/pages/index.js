@@ -79,7 +79,11 @@ const profileEditPopup = new PopupWithForm(
   {
     popupSelector: "#profile-edit-modal",
     handleFormSubmit: ({ title, description }) => {
-      profileInfo.setUserInfo(title, description);
+      //profileInfo.setUserInfo(title, description);
+      api.updateProfile(title,description)
+      .then((data)=>{
+        profileInfo.setUserInfo(data.name,data.about);
+      })
       profileEditPopup.close();
     }
   });
@@ -111,19 +115,13 @@ const cardSection = new Section({
     }
   });
   //GET USER 
-  const GetUser =new  Api({
-    headers: {
-      authorization: "1a37d956-9fa4-4c51-a36f-94e001ed1e8f",
-      "Content-Type": "application/json"
-    }
-  });
-  GetUser.getUserInfo()
-  .then((data)=>{
-    profileInfo.setUserInfo(data.name,data.about,data.avatar)
-  })
-  .catch((err)=>{
-    console.log(err);
-  })
+//api.updateProfile()
+// .then((data)=>{
+ //  profileInfo.setUserInfo(data.name,data.about)
+ // })
+ // .catch((err)=>{
+ //  console.log(err);
+ // })
 
 
 api.getInitialCards()
