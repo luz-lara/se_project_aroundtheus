@@ -33,4 +33,24 @@ export default class Api {
         })
         
 }
+    createNewCard(name,link) {
+    return fetch("https://around-api.en.tripleten-services.com/v1/cards", {
+        method: "POST",
+        headers: {
+          authorization: "1a37d956-9fa4-4c51-a36f-94e001ed1e8f",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name: name,
+          link: link
+        })
+      })
+      .then(res => {
+        if (res.ok) {
+            return res.json();
+        }
+        return Promise.reject(`Error: ${res.status}`);
+    })
+    
+}
 }

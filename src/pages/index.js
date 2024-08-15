@@ -38,7 +38,14 @@ cardImagePopup.setEventListeners();
 function handleCardFormSubmit(inputValues) {
   const name = inputValues.title;
   const link = inputValues.link;
-  renderCard({ name, link });
+ // renderCard({ name, link });
+ api.createNewCard(name,link)
+ .then((data)=>{
+  renderCard(data);
+ })
+ .catch((err)=>{
+  console.log(err);
+ })
   addCardPopup.close();
   addCardForm.reset();
   addCardFormValidator.toggleButtonState();
