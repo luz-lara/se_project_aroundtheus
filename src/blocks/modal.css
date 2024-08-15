@@ -12,6 +12,31 @@
   opacity: 0;
   transition: visibility 0.5s, opacity 0.5s linear;
 }
+.delete-card-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  z-index: 999;
+  padding: 0 19px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.5s, opacity 0.5s linear;
+}
+.modal__container-delete {
+  margin: auto;
+  background-color: #fff;
+  color: #000;
+  max-width: 430px;
+  height: 181px;
+  border-radius: 10px;
+  padding: 36px;
+  box-sizing: border-box;
+  position: relative;
+}
 .profile-add-modal {
   position: fixed;
   top: 0;
