@@ -3,7 +3,7 @@ import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
-import { initialCards, config } from "../utils/constants.js";
+import {  config } from "../utils/constants.js";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/Api.js";
 import "./index.css";
@@ -22,7 +22,6 @@ const profileForm = document.forms["profile-form"];
 /*                                ADD CARD CONSTANTS                        */
 /*                                                                          */
 const addCardForm = document.forms["add-card-form"];
-
 
 /*                                                                          */
 /*                                PREVIEW CARD MODAL                        */
@@ -108,7 +107,8 @@ addCardPopup.setEventListener();
 //addCardForm.addEventListener("submit", handleAddCardFormSubmit);
 profileAddButton.addEventListener("click", () => {
   addCardPopup.open();
-})
+});
+
 /*------------------------- Section-------------------------- */
 const cardSection = new Section({
   renderer: renderCard,
@@ -121,14 +121,6 @@ const cardSection = new Section({
       "Content-Type": "application/json"
     }
   });
-  //GET USER 
-//api.updateProfile()
-// .then((data)=>{
- //  profileInfo.setUserInfo(data.name,data.about)
- // })
- // .catch((err)=>{
- //  console.log(err);
- // })
 
 
 api.getInitialCards()

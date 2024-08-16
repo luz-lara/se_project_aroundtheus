@@ -15,8 +15,9 @@ export default class Card {
     this._likeButton.classList.toggle("card__like-button_active");
   }
   _deleteCard() {
-    this._cardElement.remove();
-    this._cardElement = null;
+  this._deleteCardModal.classList.add("modal_opened")
+    //this._cardElement.remove();
+    //this._cardElement = null;
   }
  
   viewCard() {
@@ -29,6 +30,7 @@ export default class Card {
     this._deleteButton = this._cardElement.querySelector(
       ".card__delete-button"
     );
+    this._deleteCardModal=document.querySelector(".delete-card-modal");
     this._likeButton = this._cardElement.querySelector(".card__like-button");
     //filling the template
     this._cardTitle.textContent = this._data.name;
