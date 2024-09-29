@@ -3,7 +3,7 @@ import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
-import {  config } from "../utils/constants.js";
+import { config } from "../utils/constants.js";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/Api.js";
 import "./index.css";
@@ -22,7 +22,10 @@ const profileForm = document.forms["profile-form"];
 /*                                ADD CARD CONSTANTS                        */
 /*                                                                          */
 const addCardForm = document.forms["add-card-form"];
-
+const deleteCardForm = document.forms["delete-card-form"];
+const cardTemplate = document.querySelector("#card-template").content.querySelector(".card");
+const likeButton = cardTemplate.querySelector(".card__like-button");
+console.log(likeButton);
 /*                                                                          */
 /*                                PREVIEW CARD MODAL                        */
 /*                                                                          */
@@ -37,25 +40,45 @@ cardImagePopup.setEventListeners();
 function handleCardFormSubmit(inputValues) {
   const name = inputValues.title;
   const link = inputValues.link;
- // renderCard({ name, link });
- api.createNewCard(name,link)
- .then((data)=>{
-  renderCard(data);
- })
- .catch((err)=>{
-  console.log(err);
- })
+  // renderCard({ name, link });
+  api.createNewCard(name, link)
+    .then((data) => {
+      renderCard(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
   addCardPopup.close();
   addCardForm.reset();
   addCardFormValidator.toggleButtonState();
 }
-
+const handleCardLike=(cardId,cardInstance)=> {
+const isItLiked=cardInstance.like;
+console.log(cardInstance.like);
+const toggleLike= isItLiked ? api.likeButtonDeactive(cardId) : api.likeButtonActive(cardId);
+  toggleLike
+  .then((updatedCardData)=>{
+cardInstance.handleLike(!isItLiked);
+})
+.catch((err)=>{
+  console.error("like toogle error:",err)
+})
+}
 function createCard(cardData) {
   const cardElements = new Card(cardData, "#card-template", () => {
-    cardImagePopup.open(cardData);
-  });
+    cardImagePopup.open(cardData)
+  },
+    () => {
+      api.deleteCard(cardData)
+        .catch((err) => {
+          console.log(err);
+        })
+
+    }, handleCardLike,
+  );
+    
   return cardElements.viewCard();
-}
+};
 
 function renderCard(cardData) {
   const newCard = createCard(cardData);
@@ -86,17 +109,18 @@ const profileEditPopup = new PopupWithForm(
     popupSelector: "#profile-edit-modal",
     handleFormSubmit: ({ title, description }) => {
       //profileInfo.setUserInfo(title, description);
-      api.updateProfile(title,description)
-      .then((data)=>{
-        profileInfo.setUserInfo(data.name,data.about);
-      })
+      api.updateProfile(title, description)
+        .then((data) => {
+          profileInfo.setUserInfo(data.name, data.about);
+        })
       profileEditPopup.close();
     }
   });
 profileEditPopup.setEventListener();
 
+
 /*---------------------------USER INFO---------------------------------*/
-const profileInfo = new UserInfo(".profile__title", ".profile__description",".profile__photo");
+const profileInfo = new UserInfo(".profile__title", ".profile__description", ".profile__photo");
 
 /*----------------------------CARD---------------------------------------*/
 const addCardPopup = new PopupWithForm({
@@ -109,27 +133,28 @@ profileAddButton.addEventListener("click", () => {
   addCardPopup.open();
 });
 
+
 /*------------------------- Section-------------------------- */
 const cardSection = new Section({
   renderer: renderCard,
 },
   ".gallery__list");
 //Get user user cards
-  const api = new Api({
-    headers: {
-      authorization: "1a37d956-9fa4-4c51-a36f-94e001ed1e8f",
-      "Content-Type": "application/json"
-    }
-  });
+const api = new Api({
+  headers: {
+    authorization: "1a37d956-9fa4-4c51-a36f-94e001ed1e8f",
+    "Content-Type": "application/json"
+  }
+});
 
 
 api.getInitialCards()
-.then(cards=>{
-  cardSection.renderItems(cards);
-})
-.catch((err) => {
-  console.error(err); 
-});
+  .then(cards => {
+    cardSection.renderItems(cards);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 /*                                                                          */
 /*                                FORM VALIDATORS                           */
 /*                                                                          */

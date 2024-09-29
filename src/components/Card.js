@@ -1,25 +1,48 @@
 export default class Card {
-  constructor(data, cardSelector,handleImageByClick) {
+  constructor(data, cardSelector,handleImageByClick,deleteCards,handleCardLike) {
     this._data = data;
     this._cardSelector = cardSelector;
     this._handleImageByClick = handleImageByClick;
+    this._deleteCards=deleteCards;
+    this._deleteCardForm=document.forms["delete-card-form"];
+    this.like = data.isLiked || false;
+    this._cardId=this._data._id;
+    this._handleCardLike= handleCardLike;
+
   }
   _setEventListeners() {
-    this._deleteButton.addEventListener("click", () => this._deleteCard());
-    this._likeButton.addEventListener("click", () => this._toggleLikeButton());
+    this._deleteButton.addEventListener("click", () => this._deleteCardListener());
+   this._likeButton.addEventListener("click", () =>this._handleCardLike(this._cardId,this));
     this._cardImageElement.addEventListener("click", () =>
      this._handleImageByClick(this)
     );
+    this._LikeButtonListener();
   }
-  _toggleLikeButton() {
-    this._likeButton.classList.toggle("card__like-button_active");
+  handleLike(like) {
+    console.log("Updating like status:", like);
+    this.like = like;
+    this._LikeButtonListener();
   }
-  _deleteCard() {
-  this._deleteCardModal.classList.add("modal_opened")
-    //this._cardElement.remove();
-    //this._cardElement = null;
+  _LikeButtonListener() {
+    if(this.like){
+      this._likeButton.classList.add("card__like-button_active")
+    }else{
+      this._likeButton.classList.remove("card__like-button_active")
+
+    }
   }
- 
+  _deleteCardListener() {
+  this._deleteCardModal.classList.add("modal_opened");
+  this._deleteCardForm.addEventListener("submit",(e)=>{
+    e.preventDefault();
+    //console.log(this._handleImageByClick);
+    this._deleteCards(this._data._id);
+    this._deleteCardModal.classList.remove("modal_opened");
+    this._cardElement.remove();
+    this._cardElement = null;
+  })
+  }
+
   viewCard() {
     this._cardElement = document
       .querySelector(this._cardSelector)
@@ -37,6 +60,7 @@ export default class Card {
     this._cardImageElement.src = this._data.link;
     this._cardImageElement.alt = this._data.name;
     this._setEventListeners();
+    this._LikeButtonListener();
     return this._cardElement;
   }
 }
