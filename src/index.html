@@ -20,7 +20,15 @@
     </header>
     <main class="content">
       <section class="profile page__section">
-        <img src="" alt="jacques-cousteau" class="profile__photo" />
+        <div class="profile__image-container">
+        <img src="<%=require('./images/jacques-cousteau.jpg')%>" alt="jacques-cousteau" class="profile__image" />
+          <div class="profile__image-overlay">
+        <img
+            src="<%=require('./images/edit-pencil.svg')%>"
+            alt="pencil"
+            class="profile__image-pencil"/>
+            </div>
+          </div>
         <div class="profile__info">
           <h1 class="profile__title">Jacques Cousteau</h1>
           <button class="profile__edit-button" type="button"></button>
@@ -49,6 +57,25 @@
           placeholder="Description" minlength="2" maxlength="200" required />
         <span class="modal__error" id="owner-description-error"></span>
         <button class="modal__button">Save</button>
+      </form>
+    </div>
+  </div>
+  <!-- Change profile pic -->
+  <div class= "modal" id="change__profile_picture">
+    <div class="modal__container">
+      <button class="modal__close-button" type="button"></button>
+      <h3 class="modal__heading">Change profile picture</h3>
+      <form class=" modal__form " name="change-profile-image-form">
+        <input
+          type="url"
+          name="avatar"
+          placeholder="Avatar URL"
+          class="modal__input"
+          id="modal__input-link"
+          required
+        />
+        <span class="modal__error" id="url-input-error"></span>
+        <button class="modal__button" type="submit">Save</button>
       </form>
     </div>
   </div>
@@ -86,6 +113,7 @@
         <button class="modal__button modal__delete-button">Yes</button>
       </form>
         </div>
+
   <!--TEMPLATE-->
   <template id="card-template">
     <li class="card">

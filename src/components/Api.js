@@ -14,7 +14,7 @@ export default class Api {
         return Promise.reject(`Error: ${res.status}`);
       })
   }
-  updateProfile(title, description) {
+  updateProfile(title, description,avatar) {
     return fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
       method: "PATCH",
       headers: {
@@ -23,7 +23,8 @@ export default class Api {
       },
       body: JSON.stringify({
         name: title,
-        about: description
+        about: description,
+        avatar:avatar
       })
     })
       .then(res => {
@@ -59,7 +60,7 @@ export default class Api {
       method: "DELETE",
       headers: {
         authorization: "1a37d956-9fa4-4c51-a36f-94e001ed1e8f",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       }
     })
       .then(res => {
@@ -83,7 +84,7 @@ export default class Api {
     }
     )
   }
-  likeButtonDeactive(cardId){
+  likeButtonDeactive(cardId) {
     return fetch(`https://around-api.en.tripleten-services.com/v1/cards/${cardId}/likes`, {
       method: "DELETE",
       headers: {
@@ -97,5 +98,18 @@ export default class Api {
     }
     )
   }
-  }
+  profilePicture(avatarUrl) {
+    return fetch(`https://around-api.en.tripleten-services.com/v1/users/me/avatar`, {
+      method: "PATCH",
+      headers: {
+        authorization: "1a37d956-9fa4-4c51-a36f-94e001ed1e8f",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        avatar: avatarUrl
+      })
 
+    }
+    )
+  }
+}

@@ -5,7 +5,11 @@ export default class PopupWithForm extends Popup {
         super({ popupSelector });
         this._popupForm = this._popup.querySelector(".modal__form");
         this._formInputs = this._popupForm.querySelectorAll(".modal__input");
+        this._submitButton = this._popupForm.querySelector(".modal__button")
         this._handleFormSubmit = handleFormSubmit;
+        this._defaultButtonText = this._submitButton
+        ? this._submitButton.textContent
+        : "";
     }
 
     _getInputValues() {
@@ -15,7 +19,14 @@ export default class PopupWithForm extends Popup {
         });
         return this._formValues;
     }
-
+    setLoadingState(isLoading) {
+        if (this._submitButton) {
+          this._submitButton.textContent = isLoading
+            ? this._defaultButtonText
+            : "Deleting...";
+        }
+      }
+    
 
     setEventListener() {
         super.setEventListeners();
@@ -24,7 +35,6 @@ export default class PopupWithForm extends Popup {
             event.preventDefault();
             this._handleFormSubmit(this._getInputValues());
             // this._popupForm.reset();
-
         });
     }
 }

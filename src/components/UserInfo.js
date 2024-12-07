@@ -8,17 +8,16 @@ export default class UserInfo {
         return {
             title: this._nameEl.textContent,
             job: this._jobEl.textContent,
-
+            avatar:this._avatar.src
         };
 
     }
     setUserInfo(title, description,avatar) {
         this._nameEl.textContent = title
         this._jobEl.textContent = description
-        this._avatar.src=avatar;
-
-        //console.log(description);
-        //profileTitle.textContent = profileTitleInput.value;
-        //profileDescription.textContent = profileDescriptionInput.value;
+        this.setAvatar(avatar);
     }
+    setAvatar(avatar) {
+        this._avatar.src = avatar;
+      }
 }
