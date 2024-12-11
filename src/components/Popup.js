@@ -5,18 +5,16 @@ export default class Popup {
 
     open(){
         this._popup.classList.add("modal_opened");
-        document.addEventListener("keydown", this._handleEscClose);
+        document.addEventListener("keydown", (e)=>{
+           if(e.key === "Escape"){
+            this.close();
+           }
+           
+        });
     };
     close() {
         this._popup.classList.remove("modal_opened");
-        document.removeEventListener("keydown", this._handleEscClose);
-    };
-    _handleEscClose() {
-        (e) => {
-            if (e.key === "Escape" || e.key === "Esc") {
-                this.close();
-            }
-        }
+        //document.removeEventListener("keydown", this._handleEscClose);
     };
 
     setEventListeners() {
@@ -30,7 +28,10 @@ export default class Popup {
             if (event.target === event.currentTarget) {
                 this.close();
             }
+            // close popup when users press ESC key 
+          
         });
+        
 
         //this._closeButton.addEventListener("click", () => this.close());
     }
