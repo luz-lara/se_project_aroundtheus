@@ -22,11 +22,10 @@ export default class PopupWithForm extends Popup {
     setLoadingState(isLoading) {
         if (this._submitButton) {
           this._submitButton.textContent = isLoading
-            ? this._defaultButtonText
-            : "Deleting...";
+          ? "Saving..."
+          : this._defaultButtonText;
         }
       }
-    
 
     setEventListener() {
         super.setEventListeners();
@@ -34,7 +33,7 @@ export default class PopupWithForm extends Popup {
         this._popupForm.addEventListener("submit", (event) => {
             event.preventDefault();
             this._handleFormSubmit(this._getInputValues());
-            // this._popupForm.reset();
+            this._popupForm.reset();
         });
     }
 }

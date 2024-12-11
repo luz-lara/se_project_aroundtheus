@@ -5,10 +5,10 @@ export default class PopupWithConfirmation extends Popup {
         super({ popupSelector });
         this._popupForm = this._popup.querySelector(".modal__delete-form");
         this._submitButton = this._popupForm.querySelector(".modal__delete-button")
-        this._handleFormSubmit = handleFormSubmit;
         this._defaultButtonText = this._submitButton
         ? this._submitButton.textContent
         : "";
+        this._handleFormSubmit = handleFormSubmit;
         this._deleteCardForm = document.forms["delete-card-form"];
     }
 
@@ -28,6 +28,13 @@ export default class PopupWithConfirmation extends Popup {
         console.log(cardId);
         super.open();
       }
-  
+      setLoadingState(isLoading) {
+        if (this._submitButton) {
+          this._submitButton.textContent = isLoading
+          ? "Deleting..."
+          : this._defaultButtonText;
+        }
+      }
+    
 }
 

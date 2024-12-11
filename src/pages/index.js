@@ -169,24 +169,22 @@ profileAddButton.addEventListener("click", () => {
 const deleteCardPopup= new PopupWithConfirmation({
   popupSelector:"#delete-card-modal",
   handleFormSubmit:(cardId, cardElement) => {
-    console.log(`Deleting card with cardId=${cardId}`);
+   // console.log(`Deleting card with cardId=${cardId}`);
     // Proceed to delete card from server
-    //deleteCardPopup.setDeleteState(true);
+    deleteCardPopup.setLoadingState(true);
     api
       .deleteCard(cardId)
       .then(() => {
-        console.log("Card successfully deleted");
-        //console.log(cardElement);
         cardElement.remove();
         deleteCardPopup.close();
       })
       .catch((err) => {
         console.error("Delete card error:", err);
       })
-      //.finally(() => {
+      .finally(() => {
         // Reset the loading state regardless of success or error
-        //deleteCardPopup.setDeleteState(false);
-    //  });
+        deleteCardPopup.setLoadingState(false);
+      });
   },
 });
 deleteCardPopup.setEventListener();
