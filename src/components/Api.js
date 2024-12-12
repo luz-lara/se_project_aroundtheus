@@ -14,7 +14,23 @@ export default class Api {
         return Promise.reject(`Error: ${res.status}`);
       })
   }
-  updateProfile(title, description,avatar) {
+  getUserInfo(){
+    return fetch ("https://around-api.en.tripleten-services.com/v1/users/me",{
+      method:"GET",
+      headers:{
+        authorization:"1a37d956-9fa4-4c51-a36f-94e001ed1e8f",
+        "Content-Type": "application/json"
+      }
+    })
+    .then(res =>{
+      if(res.ok){
+        return res.json();
+      }
+      return Promise.reject(`Error:${res.status}`)
+    })
+
+}
+  updateProfile(title, description) {
     return fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
       method: "PATCH",
       headers: {
@@ -24,7 +40,6 @@ export default class Api {
       body: JSON.stringify({
         name: title,
         about: description,
-        avatar:avatar
       })
     })
       .then(res => {

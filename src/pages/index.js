@@ -114,7 +114,7 @@ const changeProfilePhoto = new PopupWithForm({
     api.profilePicture(data.avatar)
       .then((res) => {
         console.log("Update Avatar Response:", res);
-        profileInfo.setAvatar(data.avatar); // Use the updated method name
+        profileInfo.setAvatar(data.avatar); 
         changeProfilePhoto.close();
       })
       .catch((err) => {
@@ -136,9 +136,9 @@ const profileEditPopup = new PopupWithForm(
     popupSelector: "#profile-edit-modal",
     handleFormSubmit: ({ title, description, avatar }) => {
       profileEditPopup.setLoadingState(true);
-      api.updateProfile(title, description, avatar)
+      api.updateProfile(title, description)
         .then((data) => {
-          profileInfo.setUserInfo(data.name, data.about, data.avatar);
+          profileInfo.setUserInfo(data.name, data.about,profileInfo.getUserInfo().avatar),
           profileEditPopup.close();
         }
         ).catch((err) => {
@@ -146,7 +146,8 @@ const profileEditPopup = new PopupWithForm(
         }).finally(() => {
           profileEditPopup.setLoadingState(false);
         })
-    }
+    },
+
   });
 
 profileEditPopup.setEventListener();
@@ -210,6 +211,11 @@ api.getInitialCards()
   .catch((err) => {
     console.error(err);
   });
+
+  api.getUserInfo()
+  .then(data=>{
+    profileInfo.setUserInfo(data.name,data.about,data.avatar);
+  })
 /*                                                                          */
 /*                                FORM VALIDATORS                           */
 /*                                                                          */
