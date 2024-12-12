@@ -142,7 +142,7 @@ const profileEditPopup = new PopupWithForm(
           profileEditPopup.close();
         }
         ).catch((err) => {
-          console.error("Delete card error:", err);
+          console.error("Update card error:", err);
         }).finally(() => {
           profileEditPopup.setLoadingState(false);
         })
