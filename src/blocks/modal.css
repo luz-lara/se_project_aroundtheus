@@ -28,10 +28,11 @@
   transition: visibility 0.5s, opacity 0.5s linear;
 }
 .modal__container-delete {
+  position:relative;
   margin: auto;
   background-color: #fff;
   color: #000;
-  max-width: 430px;
+  width: 430px;
   height: 181px;
   border-radius: 10px;
   padding: 36px;
@@ -76,6 +77,15 @@
   justify-content: center;
   row-gap: 5px;
   margin-top: 54px;
+  padding-bottom: 36px;
+  width: 358px;
+  box-sizing: border-box;
+}
+.modal__delete-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 5px;
   padding-bottom: 36px;
   width: 358px;
   box-sizing: border-box;
@@ -173,6 +183,9 @@
   .modal__container {
     max-width: 282px;
   }
+  .modal__container-delete{
+    max-width:282px;
+  }
   .modal__form {
     width: 100%;
   }
@@ -195,6 +208,9 @@
   .preview__close-button {
     width: 30px;
     height: 30px;
+  }
+  .modal__delete-form{
+    width: 100%;
   }
 }
 
