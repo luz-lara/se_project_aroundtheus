@@ -9,7 +9,6 @@ export default class PopupWithConfirmation extends Popup {
         ? this._submitButton.textContent
         : "";
         this._handleFormSubmit = handleFormSubmit;
-        this._deleteCardForm = document.forms["delete-card-form"];
     }
 
     setEventListener() {
@@ -23,7 +22,6 @@ export default class PopupWithConfirmation extends Popup {
         }
       
       open(cardId) {
-        console.log(`Opening delete confirmation for cardId=${cardId}`);
         this._popupForm.dataset.cardId = cardId;
         console.log(cardId);
         super.open();

@@ -1,104 +1,71 @@
 
 export default class Api {
   constructor(options) {
-    //constructor body
-    this._options = options;
+    this._baseUrl = options.baseUrl;
+    this._headers = options.headers;
   }
-  getInitialCards() {
-    return fetch("https://around-api.en.tripleten-services.com/v1/cards", this._options
-    )
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Error: ${res.status}`);
-      })
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Error: ${res.status}`);
   }
-  getUserInfo(){
-    return fetch ("https://around-api.en.tripleten-services.com/v1/users/me",{
-      method:"GET",
-      headers:{
-        authorization:"1a37d956-9fa4-4c51-a36f-94e001ed1e8f",
-        "Content-Type": "application/json"
-      }
-    })
-    .then(res =>{
-      if(res.ok){
-        return res.json();
-      }
-      return Promise.reject(`Error:${res.status}`)
-    })
 
-}
+  getInitialCards() {
+    return fetch(`${this._baseUrl}/cards`, {
+      headers: this._headers,
+    }).then(this._checkResponse);
+
+  }
+  getUserInfo() {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "GET",
+      headers: this._headers,
+    })
+      .then(this._checkResponse);
+  }
+
   updateProfile(title, description) {
-    return fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
+    return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
-      headers: {
-        authorization: "1a37d956-9fa4-4c51-a36f-94e001ed1e8f",
-        "Content-Type": "application/json"
-      },
+      headers: this._headers,
       body: JSON.stringify({
         name: title,
         about: description,
       })
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Error: ${res.status}`);
-      })
+      .then(this._checkResponse);
 
   }
   createNewCard(name, link) {
-    return fetch("https://around-api.en.tripleten-services.com/v1/cards", {
+    return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
-      headers: {
-        authorization: "1a37d956-9fa4-4c51-a36f-94e001ed1e8f",
-        "Content-Type": "application/json"
-      },
+      headers: this._headers,
       body: JSON.stringify({
         name: name,
         link: link
       })
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Error: ${res.status}`);
-      })
+      .then(this._checkResponse);
 
   }
   deleteCard(cardId) {
-    return fetch(`https://around-api.en.tripleten-services.com/v1/cards/${cardId}`, {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
-      headers: {
-        authorization: "1a37d956-9fa4-4c51-a36f-94e001ed1e8f",
-        "Content-Type": "application/json",
-      }
+      headers: this._headers,
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Error: ${res.status}`);
-      })
+      .then(this._checkResponse);
   }
   likeButtonActive(cardId) {
-    return fetch(`https://around-api.en.tripleten-services.com/v1/cards/${cardId}/likes`, {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "PUT",
-      headers: {
-        authorization: "1a37d956-9fa4-4c51-a36f-94e001ed1e8f",
-        "Content-Type": "application/json"
-      },
+      headers: this._headers,
       body: JSON.stringify({
         isLiked: true
       })
-
-    }
-    )
+    }).then(this._checkResponse);
   }
+
   likeButtonDeactive(cardId) {
     return fetch(`https://around-api.en.tripleten-services.com/v1/cards/${cardId}/likes`, {
       method: "DELETE",
@@ -109,22 +76,16 @@ export default class Api {
       body: JSON.stringify({
         isLiked: false
       })
-
-    }
-    )
+    }).then(this._checkResponse);
   }
+
   profilePicture(avatarUrl) {
-    return fetch(`https://around-api.en.tripleten-services.com/v1/users/me/avatar`, {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
-      headers: {
-        authorization: "1a37d956-9fa4-4c51-a36f-94e001ed1e8f",
-        "Content-Type": "application/json"
-      },
+      headers: this._headers,
       body: JSON.stringify({
         avatar: avatarUrl
       })
-
-    }
-    )
+    }).then(this._checkResponse);
   }
 }

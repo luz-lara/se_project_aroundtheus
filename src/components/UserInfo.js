@@ -7,17 +7,16 @@ export default class UserInfo {
     getUserInfo() {
         return {
             title: this._nameEl.textContent,
-            job: this._jobEl.textContent,
-            avatar:this._avatar.src
+            job: this._jobEl.textContent
         };
 
     }
     setUserInfo(title, description,avatar) {
         this._nameEl.textContent = title
         this._jobEl.textContent = description
-        this._avatar.src=avatar
+        this.setAvatar(avatar);
     }
     setAvatar(avatar) {
-        this._avatar.src = avatar;
+        this._avatar.src= avatar;
       }
 }
