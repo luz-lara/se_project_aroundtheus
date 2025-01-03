@@ -24,7 +24,7 @@ export default class Card {
   handleLike(like) {
     console.log("Updating like status:", like);
     this.like = like;
-    this._LikeButtonListener();
+    this._likeButtonListener();
   }
   _likeButtonListener() {
     if (this.like) {
