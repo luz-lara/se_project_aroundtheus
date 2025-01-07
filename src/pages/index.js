@@ -21,12 +21,13 @@ const profileDescriptionInput = document.querySelector(
 );
 const profileAddButton = document.querySelector(".profile__add-button");
 const profileForm = document.forms["profile-form"];
+const avatarForm=document.forms["change-profile-image-form"];
 const editProfileImageIcon = document.querySelector(".profile__image-pencil");
 /*                                                                          */
 /*                                ADD CARD CONSTANTS                        */
 /*                                                                          */
 const addCardForm = document.forms["add-card-form"];
-
+const changeAvatarForm=document.forms["change-profile-image-form"];
 /*                                                                          */
 /*                                PREVIEW CARD MODAL                        */
 /*                                                                          */
@@ -224,5 +225,6 @@ const profileFormValidator = new FormValidator(config, profileForm);
 profileFormValidator.enableValidation();
 const addCardFormValidator = new FormValidator(config, addCardForm);
 addCardFormValidator.enableValidation();
-
+const changeAvatarFormValidator= new FormValidator(config,changeAvatarForm);
+changeAvatarFormValidator.enableValidation();
 //cardSection.renderItems();
