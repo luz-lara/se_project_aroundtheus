@@ -67,12 +67,9 @@ export default class Api {
   }
 
   likeButtonDeactive(cardId) {
-    return fetch(`https://around-api.en.tripleten-services.com/v1/cards/${cardId}/likes`, {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "DELETE",
-      headers: {
-        authorization: "1a37d956-9fa4-4c51-a36f-94e001ed1e8f",
-        "Content-Type": "application/json"
-      },
+      headers: this._headers,
       body: JSON.stringify({
         isLiked: false
       })

@@ -113,7 +113,7 @@ const changeProfilePhoto = new PopupWithForm({
     changeProfilePhoto.renderLoading(true);
     api.profilePicture(data.avatar)
       .then((res) => {
-        profileInfo.setAvatar(data.avatar);
+        profileInfo.setAvatar(res.avatar);
         changeProfilePhoto.close();
       })
       .catch((err) => {
