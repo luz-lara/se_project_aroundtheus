@@ -50,12 +50,14 @@
       <button class="modal__close-button"></button>
       <p class="modal__heading">Edit Profile</p>
       <form class="modal__form" name="profile-form">
+        <div class="modal__input-container">
         <input type="text" name="title" class="modal__input modal__input-name" placeholder="Name" id="owner-name"
           minlength="2" maxlength="40" required />
         <span class="modal__error" id="owner-name-error"></span>
-        <input type="text" name="description" class="modal__input modal__input-description" id="owner-description"
+        <input type="text" name="description" class="modal__input modal__input-description modal__input-last" id="owner-description"
           placeholder="Description" minlength="2" maxlength="200" required />
         <span class="modal__error" id="owner-description-error"></span>
+        </div>
         <button class="modal__button">Save</button>
       </form>
     </div>
@@ -66,10 +68,12 @@
       <button class="modal__close-button" type="button"></button>
       <h3 class="modal__heading">Change profile picture</h3>
       <form class="modal__form" name="change-profile-image-form">
+        <div class="modal__input-container">
         <input type="url" name="avatar" class="modal__input modal__input-url" id="url-input" placeholder="Image URL"
           required />
         <span class="modal__error" id="url-input-error"></span>
         <span class="modal__error" id="url-input-error"></span>
+        </div>
         <button class="modal__button modal__button_disabled" type="submit">Save</button>
       </form>
     </div>
@@ -80,14 +84,16 @@
       <button class="modal__close-button"></button>
       <p class="modal__heading">New Place</p>
       <form class="modal__form" name="add-card-form">
+       <div class="modal__input-container">
         <input type="text" name="title" class="modal__input modal__input-title" id="card-title" placeholder="Title"
           minlength="1" maxlength="30" required />
         <span class="modal__error" id="card-title-error"></span>
-        <input type="url" name="link" class="modal__input modal__input-url" id="url-input" placeholder="Image URL"
+        <input type="url" name="link" class="modal__input modal__input-url modal__input-last" id="url-input" placeholder="Image URL"
           required />
         <span class="modal__error" id="url-input-error"></span>
-
+        </div>
         <button class="modal__button modal__button_disabled">Create</button>
+      
       </form>
     </div>
   </div>
