@@ -21,13 +21,13 @@ const profileDescriptionInput = document.querySelector(
 );
 const profileAddButton = document.querySelector(".profile__add-button");
 const profileForm = document.forms["profile-form"];
-const avatarForm=document.forms["change-profile-image-form"];
+const avatarForm = document.forms["change-profile-image-form"];
 const editProfileImageIcon = document.querySelector(".profile__image-pencil");
 /*                                                                          */
 /*                                ADD CARD CONSTANTS                        */
 /*                                                                          */
 const addCardForm = document.forms["add-card-form"];
-const changeAvatarForm=document.forms["change-profile-image-form"];
+const changeAvatarForm = document.forms["change-profile-image-form"];
 /*                                                                          */
 /*                                PREVIEW CARD MODAL                        */
 /*                                                                          */
@@ -109,11 +109,12 @@ profileEditButton.addEventListener("click", () => {
 })
 const changeProfilePhoto = new PopupWithForm({
   popupSelector: "#change__profile_picture",
-  handleFormSubmit: (data) => {
+  handleFormSubmit: (data, submitButton) => {
     changeProfilePhoto.renderLoading(true);
     api.profilePicture(data.avatar)
       .then((res) => {
         profileInfo.setAvatar(res.avatar);
+        submitButton.classList.add("modal__button_disabled");
         changeProfilePhoto.close();
       })
       .catch((err) => {
@@ -133,12 +134,13 @@ profileAddButton.addEventListener("click", () => {
 const profileEditPopup = new PopupWithForm(
   {
     popupSelector: "#profile-edit-modal",
-    handleFormSubmit: ({ title, description }) => {
+    handleFormSubmit: ({ title, description }, profileEditForm) => {
       profileEditPopup.renderLoading(true);
       api.updateProfile(title, description)
         .then((data) => {
-          profileInfo.setUserInfo(data.name, data.about,data.avatar),
-            profileEditPopup.close();
+          profileInfo.setUserInfo(data.name, data.about, data.avatar),
+            profileEditForm.reset;
+          profileEditPopup.close();
         }
         ).catch((err) => {
           console.error("Update card error:", err);
@@ -214,7 +216,7 @@ api.getUserInfo()
   .then(data => {
     profileInfo.setUserInfo(data.name, data.about, data.avatar);
   })
-  .catch((err)=>{
+  .catch((err) => {
     console.log(err);
   })
 /*                                                                          */
@@ -225,6 +227,6 @@ const profileFormValidator = new FormValidator(config, profileForm);
 profileFormValidator.enableValidation();
 const addCardFormValidator = new FormValidator(config, addCardForm);
 addCardFormValidator.enableValidation();
-const changeAvatarFormValidator= new FormValidator(config,changeAvatarForm);
+const changeAvatarFormValidator = new FormValidator(config, changeAvatarForm);
 changeAvatarFormValidator.enableValidation();
 //cardSection.renderItems();

@@ -7,9 +7,6 @@ export default class Card {
     this.like = data.isLiked || false;
     this._cardId = this._data._id;
     this._handleCardLike = handleCardLike;
-    this._defaultButtonText = this._submitButton
-      ? this._submitButton.textContent
-      : "";
 
   }
   _setEventListeners() {
